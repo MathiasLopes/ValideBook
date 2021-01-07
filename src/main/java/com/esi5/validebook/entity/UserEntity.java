@@ -18,6 +18,7 @@ public class UserEntity {
     private String email;
     private String password;
     private boolean accountVerified;
+    private String roles;
 
     public Long getId() {
         return id;
@@ -79,4 +80,13 @@ public class UserEntity {
     public int hashCode() {
         return Objects.hash(email);
     }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
 }
