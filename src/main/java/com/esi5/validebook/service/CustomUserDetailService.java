@@ -1,4 +1,3 @@
-
 package com.esi5.validebook.service;
 
 import com.esi5.validebook.entity.UserEntity;
@@ -28,7 +27,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
         UserDetails user = User.withUsername(customer.getEmail())
                             .password(customer.getPassword())
-                            .authorities("USER").build();
+                            .roles(customer.getRoles().isEmpty() ? "USER" : customer.getRoles()).build();
 
         return user;
     }
