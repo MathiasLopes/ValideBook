@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 import javax.annotation.Resource;
 
 @Configuration
@@ -22,16 +24,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
      http.authorizeRequests()
-        .antMatchers("/login","/register").permitAll()
-        .antMatchers("/home").authenticated()
-        .antMatchers("/admin*").hasRole("ADMIN")
-        .and()
+            .antMatchers("/login","/register").permitAll()
+            .antMatchers("/home").authenticated()
+            .antMatchers("/admin*").access("hasRole('ADMIN')")
+            .antMatchers("/specialiste*").access("hasRole('SPECIALISTE') OR hasRole('ADMIN')")
+            .and()
         .formLogin().defaultSuccessUrl("/home")
-        .loginPage("/login")
-        .failureUrl("/login?error")
-        .and()
-        .logout().logoutSuccessUrl("/login?logout"); 
-        
+            .loginPage("/login")
+            .failureUrl("/login?error")
+            .and()
+        .logout()
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))            
+            .logoutSuccessUrl("/login")
+            .invalidateHttpSession(true)        // set invalidation state when logout
+            .deleteCookies("JSESSIONID") 
+        .and();
     }
 
     @Bean

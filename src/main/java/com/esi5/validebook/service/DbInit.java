@@ -47,6 +47,14 @@ public class DbInit implements CommandLineRunner {
         user2.setAccountVerified(true);
         user2.setPassword(passwordEncoder.encode("1234"));
         user2.setRoles("ADMIN");
+
+        UserEntity user3 = new UserEntity();
+        user3.setEmail("spec@test.fr");
+        user3.setFirstName("Specialiste");
+        user3.setLastName("Pro");
+        user3.setAccountVerified(true);
+        user3.setPassword(passwordEncoder.encode("1234"));
+        user3.setRoles("SPECIALISTE");
         
         List<UserEntity> liste = new ArrayList<>();
         liste.add(user);
@@ -55,6 +63,8 @@ public class DbInit implements CommandLineRunner {
         userRepository.saveAndFlush(user1);
         liste.add(user2);
         userRepository.saveAndFlush(user2);
+        liste.add(user3);
+        userRepository.saveAndFlush(user3);
  
     }
 

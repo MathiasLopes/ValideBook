@@ -15,4 +15,9 @@ public class HomeController {
     public String admin(){
         return "admin/admin";
     }
+
+    @GetMapping("/specialiste")
+    public String specialiste(){
+        return "specialiste/specialiste";
+    }
 }
