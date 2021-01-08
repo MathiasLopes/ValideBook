@@ -20,6 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
      http.authorizeRequests()
         .antMatchers("/login","/register").permitAll()
         .antMatchers("/home").authenticated()
@@ -30,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .failureUrl("/login?error")
         .and()
         .logout().logoutSuccessUrl("/login?logout"); 
-          
+        
     }
 
     @Bean
