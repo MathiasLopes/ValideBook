@@ -39,12 +39,22 @@ public class DbInit implements CommandLineRunner {
         user1.setAccountVerified(true);
         user1.setPassword(passwordEncoder.encode("12345"));
         user1.setRoles("USER");
+
+        UserEntity user2 = new UserEntity();
+        user2.setEmail("mathias@test.fr");
+        user2.setFirstName("Mathias");
+        user2.setLastName("Lopes");
+        user2.setAccountVerified(true);
+        user2.setPassword(passwordEncoder.encode("1234"));
+        user2.setRoles("ADMIN");
         
         List<UserEntity> liste = new ArrayList<>();
         liste.add(user);
         userRepository.saveAndFlush(user);
         liste.add(user1);
         userRepository.saveAndFlush(user1);
+        liste.add(user2);
+        userRepository.saveAndFlush(user2);
  
     }
 
