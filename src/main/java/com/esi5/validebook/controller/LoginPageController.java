@@ -8,6 +8,7 @@ public class LoginPageController {
 
     @GetMapping("/")
     public String index(){
+        //Permet de diriger l'utiisateur vers la page de connexion lorsqu'il vient sur le site sans url précise
         return "account/login";
     }
 
