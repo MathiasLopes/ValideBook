@@ -1,10 +1,32 @@
-
 <html>
     <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" th:href="@{/global/packages/rippleria/jquery.rippleria.min.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/global/css/loading.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/home/css/style.css}" />
+
         <script th:src="@{/global/js/jquery-3.5.1.min.js}"></script>
+        <script th:src="@{/global/packages/rippleria/jquery.rippleria.min.js}"></script>
+        
+        <script th:src="@{/global/js/show-conteneur-on-load.js}"></script>
         <script th:src="@{/home/js/script.js}"></script>
     </head>
     <body>
-        BIENVENUE DANS LA MAISON
+        <div class="conteneur content-icone">
+            <img class="icone" th:src="@{/global/images/icone.png}" />
+            <span>ValideBook</span>
+        </div>
+        <div class="conteneur content-listebook">
+            <div class="title-conteneur">20 derniers livres ajoutés :</div>
+            <!-- icone de loading -->
+            <div class="content-loading">
+            <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+             </svg>
+            </div>
+             <!-- fin icone de loading -->
+        </div>
     </body>
 </html>

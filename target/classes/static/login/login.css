@@ -59,6 +59,12 @@ body{
     border-radius: 5px;
     margin-top: 5px;
     outline: 0px;
+    transition:0.3s;
+}
+
+.btn-seconnecter:hover{
+    box-shadow:0px 0px 12px -5px black;
+    transform:scale(1.1);
 }
 
 .content-error{
