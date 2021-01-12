@@ -2,6 +2,8 @@ package com.esi5.validebook.service;
 
 import com.esi5.validebook.entity.UserEntity;
 import com.esi5.validebook.repository.UserRepository;
+import com.esi5.validebook.entity.BookEntity;
+import com.esi5.validebook.repository.BookRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +19,14 @@ public class DbInit implements CommandLineRunner {
     @Autowired
     UserRepository userRepository;
     @Autowired
+    BookRepository bookRepository;
+    @Autowired
     private PasswordEncoder passwordEncoder;
  
     @Override
     public void run(String... args) throws Exception {
         
+        //Insertion pour la table utilisateur
         userRepository.deleteAll();
         
         UserEntity user = new UserEntity();
@@ -56,16 +61,32 @@ public class DbInit implements CommandLineRunner {
         user3.setPassword(passwordEncoder.encode("1234"));
         user3.setRoles("SPECIALISTE");
         
-        List<UserEntity> liste = new ArrayList<>();
-        liste.add(user);
+        List<UserEntity> listeuser = new ArrayList<>();
+        listeuser.add(user);
         userRepository.saveAndFlush(user);
-        liste.add(user1);
+        listeuser.add(user1);
         userRepository.saveAndFlush(user1);
-        liste.add(user2);
+        listeuser.add(user2);
         userRepository.saveAndFlush(user2);
-        liste.add(user3);
+        listeuser.add(user3);
         userRepository.saveAndFlush(user3);
- 
+
+        //insertion pour la tale books
+        bookRepository.deleteAll();
+
+        BookEntity book1 = new BookEntity();
+        book1.setTitre("Lupin");
+        book1.setLangue("Francais");
+
+        BookEntity book2 = new BookEntity();
+        book2.setTitre("Lupdeux");
+        book2.setLangue("Anglais");
+        
+        List<BookEntity> listebook = new ArrayList<>();
+        listebook.add(book1);
+        bookRepository.saveAndFlush(book1);
+        listebook.add(book2);
+        bookRepository.saveAndFlush(book2);
     }
 
 }

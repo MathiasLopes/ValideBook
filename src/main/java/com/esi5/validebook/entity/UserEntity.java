@@ -1,7 +1,6 @@
 package com.esi5.validebook.entity;
 
 import java.util.Objects;
-
 import javax.persistence.*;
 
 @Entity

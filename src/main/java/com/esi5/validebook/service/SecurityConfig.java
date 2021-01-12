@@ -24,12 +24,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
      http.authorizeRequests()
-            .antMatchers("/login","/register").permitAll()
-            .antMatchers("/home").authenticated()
-            .antMatchers("/admin*").access("hasRole('ADMIN')")
-            .antMatchers("/specialiste*").access("hasRole('SPECIALISTE') OR hasRole('ADMIN')")
+            .antMatchers("/login").permitAll()
+            .antMatchers("/home/**").authenticated()
+            .antMatchers("/admin/**").access("hasRole('ADMIN')")
+            .antMatchers("/specialiste/**").access("hasRole('SPECIALISTE') OR hasRole('ADMIN')")
             .and()
-        .formLogin().defaultSuccessUrl("/home")
+        .formLogin()
+            .defaultSuccessUrl("/home")
             .loginPage("/login")
             .failureUrl("/login?error")
             .and()
