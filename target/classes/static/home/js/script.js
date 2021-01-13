@@ -31,10 +31,10 @@ function fabriqueListeBook(data){
             var unLivre = data[i];
 
             htmllistebook += 
-                '<div>' + 
-                    'Titre : ' + unLivre.titre +
-                    ' - ' +
-                    'Langue : ' + unLivre.langue
+                '<div class="content-unbook">' + 
+                    '<div class="content-column-unbook">Titre : ' + unLivre.titre + '</div>' +
+                    '<div class="content-column-unbook">Langue : ' + unLivre.langue + '</div>' +
+                    '<div class="content-column-unbook">Date d\'ajout : ' + new Date(unLivre.dateajout).toLocaleString() + '</div>' +
                 '</div>';
         }
 

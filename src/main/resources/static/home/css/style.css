@@ -40,6 +40,7 @@ body{
 }
 
 .content-listebook{
+    width: 98%;
     min-height: 200px;
     margin-top: 13px;
     margin-left: auto;
@@ -50,4 +51,29 @@ body{
     padding: 14px 5px 13px 20px;
     border-bottom: 1px solid #CCC;
     font-size: 19px;
+}
+
+.content-unbook{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 40px;
+    cursor: pointer;
+    transition:0.2s;
+    background-color:white;
+    border-radius: 5px;
+    border-bottom: 1px solid #CCC;
+}
+
+.content-unbook:hover{
+    transform: scale(1.01);
+    box-shadow: 0px 0px 15px -10px black;
+    border-bottom: 1px solid #FFF;
+    z-index: 2;
+    position: relative;
+}
+
+.content-column-unbook{
+    padding:5px 20px 5px 20px;
+    text-align: left;
 }
