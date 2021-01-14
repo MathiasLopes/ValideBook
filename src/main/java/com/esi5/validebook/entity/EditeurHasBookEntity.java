@@ -6,6 +6,9 @@ import javax.persistence.*;
 @Table(name = "editeurhasbook")
 public class EditeurHasBookEntity {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Long idediteur;
     private Long idlivre;
 
@@ -23,6 +26,14 @@ public class EditeurHasBookEntity {
 
     public void setIdlivre(Long idlivre) {
         this.idlivre = idlivre;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }
