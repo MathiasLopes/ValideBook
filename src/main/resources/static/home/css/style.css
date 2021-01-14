@@ -77,3 +77,8 @@ body{
     padding:5px 20px 5px 20px;
     text-align: left;
 }
+
+.book-not-found{
+    text-align:center;
+    margin-top: 54px;
+}

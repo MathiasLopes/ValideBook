@@ -1,9 +1,6 @@
 package com.esi5.validebook.entity;
 
-import java.util.Date;
 import javax.persistence.*;
-
-import org.springframework.lang.Nullable;
 
 @Entity
 @Table(name = "auteur")
@@ -13,10 +10,7 @@ public class AuteurEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
-    private Date datenaissance;
-    @Nullable
-    private Date datedeces;
-    private String lieuDeNaissance;
+    private String description;
 
     public Long getId() {
         return id;
@@ -34,28 +28,12 @@ public class AuteurEntity {
         this.nom = nom;
     }
 
-    public Date getDatenaissance() {
-        return datenaissance;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDatenaissance(Date datenaissance) {
-        this.datenaissance = datenaissance;
-    }
-
-    public Date getDatedeces() {
-        return datedeces;
-    }
-
-    public void setDatedeces(Date datedeces) {
-        this.datedeces = datedeces;
-    }
-
-    public String getLieuDeNaissance() {
-        return lieuDeNaissance;
-    }
-
-    public void setLieuDeNaissance(String lieuDeNaissance) {
-        this.lieuDeNaissance = lieuDeNaissance;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

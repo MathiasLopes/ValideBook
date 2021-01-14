@@ -39,7 +39,7 @@ function fabriqueListeBook(data){
         }
 
     }else{
-        htmllistebook = "Aucun livre retrouvé";
+        htmllistebook = "<div class='book-not-found'>Aucun livre retrouvé</div>";
     }
     
     return htmllistebook;
