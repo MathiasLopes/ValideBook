@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `Livre`.`Article` (
   INDEX `fk_Citations_Langue1_idx` (`Langue_id` ASC),
   INDEX `fk_Citations_Utilisateurs1_idx` (`Utilisateurs_id` ASC),
   INDEX `fk_Citations_Utilisateurs2_idx` (`UtilisateursSpe_id` ASC),
-  INDEX `fk_Citations_Livre1_idx` (`Livre_id` ASC) VISIBLE,
+  INDEX `fk_Citations_Livre1_idx` (`Livre_id` ASC),
   INDEX `fk_Article_TypeArticle1_idx` (`TypeArticle_id` ASC),
   CONSTRAINT `fk_Citations_Theme1`
     FOREIGN KEY (`Theme_id`)
