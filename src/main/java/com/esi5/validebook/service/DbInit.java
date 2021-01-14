@@ -32,37 +32,46 @@ public class DbInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         
-        //Insertion pour la table utilisateur
-        /*userRepository.deleteAll();
+        //insertion dans la table utilisateur
+        resetAndInsertUsers();
+
+        //insertion pour la tale book
+        //resetAndInsertBooks();
+
+        //ajoute les langues dans la base de données
+        resetAndInsertLangues();
+        
+    }
+
+    //Insertion pour la table utilisateur
+    public void resetAndInsertUsers(){
+
+        userRepository.deleteAll();
         
         UserEntity user = new UserEntity();
         user.setEmail("sguerfi12@yahoo.com");
-        user.setFirstName("TOTO");
-        user.setLastName("TOTO");
+        user.setNomComplet("TOTO");
         user.setAccountVerified(true);
         user.setPassword(passwordEncoder.encode("1234"));
         user.setRoles("ADMIN");
 
         UserEntity user1 = new UserEntity();
         user1.setEmail("sguerfi12@gmail.com");
-        user1.setFirstName("TITI");
-        user1.setLastName("TITI");
+        user1.setNomComplet("TITI");
         user1.setAccountVerified(true);
         user1.setPassword(passwordEncoder.encode("12345"));
         user1.setRoles("USER");
 
         UserEntity user2 = new UserEntity();
         user2.setEmail("mathias@test.fr");
-        user2.setFirstName("Mathias");
-        user2.setLastName("Lopes");
+        user2.setNomComplet("Mathias Lopes");
         user2.setAccountVerified(true);
         user2.setPassword(passwordEncoder.encode("1234"));
         user2.setRoles("ADMIN");
 
         UserEntity user3 = new UserEntity();
         user3.setEmail("spec@test.fr");
-        user3.setFirstName("Specialiste");
-        user3.setLastName("Pro");
+        user3.setNomComplet("Specialiste");
         user3.setAccountVerified(true);
         user3.setPassword(passwordEncoder.encode("1234"));
         user3.setRoles("SPECIALISTE");
@@ -75,10 +84,14 @@ public class DbInit implements CommandLineRunner {
         listeuser.add(user2);
         userRepository.saveAndFlush(user2);
         listeuser.add(user3);
-        userRepository.saveAndFlush(user3);*/
+        userRepository.saveAndFlush(user3);
 
-        //insertion pour la tale books
-        bookRepository.deleteAll();
+    }
+
+    //insertion pour la tale books
+    public void resetAndInsertBooks(){
+
+        /*bookRepository.deleteAll();
 
         BookEntity book1 = new BookEntity();
         book1.setTitre("Lupin");
@@ -102,7 +115,12 @@ public class DbInit implements CommandLineRunner {
         listebook.add(book1);
         bookRepository.saveAndFlush(book1);
         listebook.add(book2);
-        bookRepository.saveAndFlush(book2);
+        bookRepository.saveAndFlush(book2);*/
+
+    }
+
+    //ajoute les langues dans la base de données
+    public void resetAndInsertLangues(){
 
         langueRepository.deleteAll();
 
@@ -131,6 +149,7 @@ public class DbInit implements CommandLineRunner {
         langueRepository.saveAndFlush(langue3);
         listelangues.add(langue4);
         langueRepository.saveAndFlush(langue4);
+
     }
 
 }

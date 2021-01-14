@@ -40,8 +40,7 @@ public class HomeRequestController {
                 bookComplet.setId(book.getId());
                 bookComplet.setIdcategorie(book.getIdcategorie());
                 bookComplet.setIdlangue(book.getIdlangue());
-                bookComplet.setIduser(book.getIduser());
-                bookComplet.setMeilleurextrait(book.getMeilleurextrait());
+                bookComplet.setIduserajout(book.getIduserajout());
                 bookComplet.setResume(book.getResume());
                 bookComplet.setTitre(book.getTitre());
 
