@@ -9,7 +9,11 @@ public class ExtraitEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Lob
+    @Column
     private String extrait;
+    
     private Long idlivre;
 
     public Long getId() {

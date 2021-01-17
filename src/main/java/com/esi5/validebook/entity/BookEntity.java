@@ -21,8 +21,6 @@ public class BookEntity {
     private Integer idlangue;
     private Integer idcategorie;
     private Integer idgenre;
-    private Integer idcommentaire;
-    private Integer idedition;
     
     private Integer iduserajout;
     private Date dateajout;
@@ -89,14 +87,6 @@ public class BookEntity {
         this.dateajout = dateajout;
     }
 
-    public Integer getIdcommentaire() {
-        return idcommentaire;
-    }
-
-    public void setIdcommentaire(Integer idcommentaire) {
-        this.idcommentaire = idcommentaire;
-    }
-
     public Integer getIduservalide() {
         return iduservalide;
     }
@@ -127,14 +117,6 @@ public class BookEntity {
 
     public void setDatepublication(Date datepublication) {
         this.datepublication = datepublication;
-    }
-
-    public Integer getIdedition() {
-        return idedition;
-    }
-
-    public void setIdedition(Integer idedition) {
-        this.idedition = idedition;
     }
 
     public String getMotcles() {
