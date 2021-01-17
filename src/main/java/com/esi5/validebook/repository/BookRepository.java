@@ -8,6 +8,4 @@ import com.esi5.validebook.entity.BookEntity;
 @Repository
 public interface BookRepository extends JpaRepository<BookEntity, Long> {
 
-    
-
 }

@@ -65,20 +65,12 @@ public class BookEntityRequest extends BookEntity {
         this.listArticles = listArticles;
     }
 
-    public void setListArticles(long id) {
-        //this.listArticles = listArticles;
-    }
-
     public List<CollectionEntity> getListCollections() {
         return listCollections;
     }
 
     public void setListCollections(List<CollectionEntity> listCollections) {
         this.listCollections = listCollections;
-    }
-
-    public void setListCollections(long id) {
-        //this.listCollections = listCollections;
     }
 
     public List<AuteurEntity> getListAuteurs() {
@@ -89,10 +81,6 @@ public class BookEntityRequest extends BookEntity {
         this.listAuteurs = listAuteurs;
     }
 
-    public void setListAuteurs(long id) {
-        //this.listAuteurs = listAuteurs;
-    }
-
     public List<CommentaireEntity> getListCommentaires() {
         return listCommentaires;
     }
@@ -101,20 +89,12 @@ public class BookEntityRequest extends BookEntity {
         this.listCommentaires = listCommentaires;
     }
 
-    public void setListCommentaires(long id) {
-        //this.listCommentaires = listCommentaires;
-    }
-
     public List<EditeurEntity> getListEditeurs() {
         return listEditeurs;
     }
 
     public void setListEditeurs(List<EditeurEntity> listEditeurs) {
         this.listEditeurs = listEditeurs;
-    }
-
-    public void setListEditeurs(long id) {
-        //this.listEditeurs = listEditeurs;
     }
 
 }

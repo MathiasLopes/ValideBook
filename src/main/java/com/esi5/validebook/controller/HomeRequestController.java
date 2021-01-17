@@ -31,7 +31,7 @@ public class HomeRequestController {
     CategorieRepository categorieRepository;
     @Autowired
     GenreRepository genreRepository;
-    @Autowired
+    /*@Autowired
     ExtraitRepository extraitRepository;
     @Autowired
     ArticleRepository articleRepository;
@@ -48,7 +48,7 @@ public class HomeRequestController {
     @Autowired
     EditeurHasBookRepository editeurHasBookRepository;
     @Autowired
-    EditeurRepository editeurRepository;
+    EditeurRepository editeurRepository;*/
     
 
     @GetMapping("/home/listebooks")
@@ -94,7 +94,7 @@ public class HomeRequestController {
 
                     //on met des try catch au cas ou il y a une erreur lors de la requete
                     //extraits
-                    List<ExtraitEntity> listExtrait = new ArrayList<>();
+                    /*List<ExtraitEntity> listExtrait = new ArrayList<>();
                     try{
                         listExtrait = extraitRepository.findByIdlivre(book.getId());
                     }catch(Exception e){ }
@@ -128,7 +128,8 @@ public class HomeRequestController {
                     bookComplet.setListEditeurs(listEditeurs);
 
                     //ajout du livre dans la liste
-                    listeBookComplet.add(bookComplet);
+                    listeBookComplet.add(bookComplet);*/
+
                 }else{
                     break;
                 }
@@ -143,7 +144,7 @@ public class HomeRequestController {
         return listeBookComplet;
     }
 
-    private List<EditeurEntity> getListEditeurs(long idbook){
+    /*private List<EditeurEntity> getListEditeurs(long idbook){
 
         List<EditeurEntity> listEditeurs = new ArrayList<>();
         List<EditeurHasBookEntity> listEditeurHasBook = new ArrayList<>();
@@ -204,6 +205,6 @@ public class HomeRequestController {
         } 
 
         return listAuteur;
-    }
+    }*/
 
 }
