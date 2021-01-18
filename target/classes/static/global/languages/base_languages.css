@@ -14,12 +14,19 @@
     height: 30px;
     width: 30px;
     background-size: 100%;
-    background-image: url("/global/languages/images/francais.jpg");
     margin-left: auto;
     margin-right: auto;
     position: relative;
     top: 9px;
     background-repeat: no-repeat;
+  }
+
+  #imagelanguage.francais{
+    background-image: url("/global/languages/images/francais.jpg");
+  }
+
+  #imagelanguage.anglais{
+    background-image: url("/global/languages/images/anglais.jpg");
   }
 
   .parent-parentlanguagetochoose{
@@ -66,4 +73,18 @@
 
   .imagelanguagetochoose.anglais{
     background-image: url("/global/languages/images/anglais.jpg");
+  }
+
+  #chooselanguages.topright{
+    float: right;
+    position: relative;
+    right: 25px;
+    margin-right: 20px;
+    top: 2px;
+  }
+
+  #chooselanguages.topright .parent-parentlanguagetochoose{
+    right: 60px;
+    left: auto;
+    transform-origin: right;
   }

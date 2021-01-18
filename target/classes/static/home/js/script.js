@@ -32,9 +32,9 @@ function fabriqueListeBook(data){
 
             htmllistebook += 
                 '<div class="content-unbook">' + 
-                    '<div class="content-column-unbook">Titre : ' + unLivre.titre + '</div>' +
-                    '<div class="content-column-unbook">Langue : ' + unLivre.langue.langue + '</div>' +
-                    '<div class="content-column-unbook">Date d\'ajout : ' + new Date(unLivre.dateajout).toLocaleString() + '</div>' +
+                    '<div class="content-column-unbook"><span class="text-title-book">Titre :</span> ' + unLivre.titre + '</div>' +
+                    '<div class="content-column-unbook"><span class="text-langue-book">Langue :</span> ' + unLivre.langue.langue + '</div>' +
+                    '<div class="content-column-unbook"><span class="text-date-book">Date d\'ajout :</span> ' + new Date(unLivre.dateajout).toLocaleString() + '</div>' +
                 '</div>';
         }
 
@@ -44,7 +44,6 @@ function fabriqueListeBook(data){
     
     return htmllistebook;
 }
-
 
 
 

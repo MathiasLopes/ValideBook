@@ -6,10 +6,19 @@
         <link rel="stylesheet" type="text/css" th:href="@{/global/packages/rippleria/jquery.rippleria.min.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/global/css/loading.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/home/css/style.css}" />
-
+        
         <script th:src="@{/global/js/jquery-3.5.1.min.js}"></script>
         <script th:src="@{/global/packages/rippleria/jquery.rippleria.min.js}"></script>
         
+        <!-- importation des languages -->
+        <link rel="stylesheet" type="text/css" th:href="@{/global/languages/base_languages.css}"/>
+        <script th:src="@{/global/languages/base_languages.js}"></script>
+
+        <!-- importation du bouton deconnexion -->
+        <link rel="stylesheet" type="text/css" th:href="@{/global/packages/deconnexion/deconnexion.css}" />
+        <script th:src="@{/global/packages/deconnexion/deconnexion.js}"></script>
+
+        <script th:src="@{/home/js/home_language.js}"></script>
         <script th:src="@{/global/js/show-conteneur-on-load.js}"></script>
         <script th:src="@{/home/js/script.js}"></script>
     </head>
@@ -18,17 +27,39 @@
             <img class="icone" th:src="@{/global/images/icone.png}" />
             <span>ValideBook</span>
         </div>
-        <div class="conteneur content-listebook">
-            <div class="title-conteneur">20 derniers livres ajoutés :</div>
-            <div id="content-listebook-complete">
-                <!-- icone de loading -->
-                <div class="content-loading">
-                    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-                    </svg>
+
+        <!-- bouton deconnexion -->
+        <div id="btDeconnexion">Se déconnecter</div>
+        <!-- fin -->
+
+        <!-- html de base pour language -->
+        <div id="chooselanguages" class="topright">
+            <div id="imagelanguage" class="francais"></div>
+            <div class="parent-parentlanguagetochoose"></div>
+        </div>
+        <!-- fin -->
+
+        <div style="display: block;">
+
+            <!-- liste des 20 derniers livres validés -->
+            <div class="conteneur content-listebook">
+                <div id="title-listbook" class="title-conteneur">20 derniers livres ajoutés :</div>
+                <div id="content-listebook-complete">
+                    <!-- icone de loading -->
+                    <div class="content-loading">
+                        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                        </svg>
+                    </div>
+                    <!-- fin icone de loading -->
                 </div>
-                <!-- fin icone de loading -->
             </div>
+
+            <!-- partie recherche -->
+            <div class="conteneur content-searchwindow">
+                <div id="title-search" class="title-conteneur">Rechercher :</div>
+            </div>
+
         </div>
     </body>
 </html>

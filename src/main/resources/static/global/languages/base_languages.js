@@ -4,7 +4,13 @@ var langue_used = {
     champEmail: "Email",
     champPassword: "Mot de passe",
     idInvalideOrPasswordForgotten: "Identifiant ou mot de passe invalide",
-    champDisconnected:"Vous avez été déconnecté"
+    champDisconnected:"Vous avez été déconnecté",
+    textTitleBook:"Titre :",
+    textLangueBook:"Langue :",
+    textDateBook:"Date d'ajout :",
+    textBtDeconnexion:"Se déconnecter",
+    textTitle20livre: "20 derniers livres ajoutés :",
+    textTitleSearch: "Rechercher :"
 }
 
 var jsonlangueforhtml = [{
@@ -55,14 +61,17 @@ function addAllDrapeau(){
 
 function loadLanguageWithFile(langue, callback){
 
+    $("#imagelanguage").removeClass("francais").removeClass("anglais");
     var requestbase = "/global/languages/francais.json";
 
     switch(langue){
         case "francais":
             requestbase = "/global/languages/francais.json";
+            $("#imagelanguage").addClass("francais");
             break;
         case "anglais":
             requestbase = "/global/languages/anglais.json";
+            $("#imagelanguage").addClass("anglais");
             break;
         default:
             break;

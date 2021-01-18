@@ -4,5 +4,11 @@
     "champEmail": "Email",
     "champPassword": "Mot de passe",
     "idInvalideOrPasswordForgotten": "Identifiant ou mot de passe invalide",
-    "champDisconnected":"Vous avez été déconnecté"
+    "champDisconnected":"Vous avez été déconnecté",
+    "textTitleBook": "Titre :",
+    "textLangueBook": "Langue :",
+    "textDateBook": "Date d'ajout :",
+    "textBtDeconnexion":"Se déconnecter",
+    "textTitle20livre": "20 derniers livres ajoutés :",
+    "textTitleSearch": "Rechercher :"
 }

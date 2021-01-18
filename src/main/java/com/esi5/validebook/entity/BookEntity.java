@@ -127,5 +127,9 @@ public class BookEntity {
         this.motcles = motcles;
     }
 
+    public Boolean isValidee(){
+        return this.getIduservalide() > 0;
+    }
+
 }
 
