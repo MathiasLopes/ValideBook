@@ -14,10 +14,16 @@ import com.esi5.validebook.entity.EditeurEntity;
 import com.esi5.validebook.entity.EditeurHasBookEntity;
 import com.esi5.validebook.entity.ExtraitEntity;
 import com.esi5.validebook.entity.ForWebRequest.BookEntityRequest;
+import com.esi5.validebook.entity.ForWebRequest.FilterBookEntityRequest;
 import com.esi5.validebook.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -67,69 +73,9 @@ public class HomeRequestController {
 
                 //si i est plus petit que 20 et que l'id user valide est plus grand que 0 (il y a donc bien été validé)
                 if(i < 20 && book.isValidee()){
-                    
-                    BookEntityRequest bookComplet = new BookEntityRequest();
 
-                    //on recuepre directement toutes les informations dans l'objet
-                    bookComplet.setDateajout(book.getDateajout());
-
-                    //on set tous les champs ID
-                    bookComplet.setId(book.getId());
-                    bookComplet.setIdcategorie(book.getIdcategorie());
-                    bookComplet.setIdlangue(book.getIdlangue());
-                    bookComplet.setIduserajout(book.getIduserajout());
-                    bookComplet.setIdgenre(book.getIdgenre());
-                    bookComplet.setIduservalide(book.getIduservalide());
-
-                    //on set tous les champs dates
-                    bookComplet.setDateajout(book.getDateajout());
-                    bookComplet.setDatepublication(book.getDatepublication());
-                    bookComplet.setDatevalidation(book.getDatevalidation());
-                    
-                    //on set tous les champs textes
-                    bookComplet.setResume(book.getResume());
-                    bookComplet.setTitre(book.getTitre());
-                    bookComplet.setMotcles(book.getMotcles());
-
-                    //on set toutes les listes et champ venant d'autres tables
-                    bookComplet.setLangue(langueRepository.findById((long) book.getIdlangue()).get());
-                    bookComplet.setCategorie(categorieRepository.findById((long) book.getIdcategorie()).get());
-                    bookComplet.setGenre(genreRepository.findById((long) book.getIdgenre()).get());
-
-                    //on met des try catch au cas ou il y a une erreur lors de la requete
-                    //extraits
-                    List<ExtraitEntity> listExtrait = new ArrayList<>();
-                    try{
-                        listExtrait = extraitRepository.findByIdlivre(book.getId());
-                    }catch(Exception e){ }
-
-                    bookComplet.setListExtraits(listExtrait);
-
-                    //articles
-                    List<ArticleEntity> listArticle = new ArrayList<>();
-                    try{
-                        listArticle = articleRepository.findByIdlivre(book.getId());
-                    }catch(Exception e){ }
-                    bookComplet.setListArticles(listArticle);
-
-                    //auteurs
-                    List<AuteurEntity> listAuteurs = getListAuteurs(book.getId());
-                    bookComplet.setListAuteurs(listAuteurs);
-                    
-                    //collections
-                    List<CollectionEntity> listCollection = getListCollections(book.getId());
-                    bookComplet.setListCollections(listCollection);
-
-                    //commentaires
-                    List<CommentaireEntity> listCommentaires = new ArrayList<>();
-                    try{
-                        listCommentaires = commentaireRepository.findByIdlivre(book.getId());
-                    }catch(Exception e){ }
-                    bookComplet.setListCommentaires(listCommentaires);
-
-                    //editeurs
-                    List<EditeurEntity> listEditeurs = getListEditeurs(book.getId());
-                    bookComplet.setListEditeurs(listEditeurs);
+                    //on recupere toutes les infos d'un book
+                    BookEntityRequest bookComplet = getBookComplet(book);
 
                     //ajout du livre dans la liste
                     listeBookComplet.add(bookComplet);
@@ -146,6 +92,97 @@ public class HomeRequestController {
         }
 
         return listeBookComplet;
+    }
+
+    @PostMapping(value = "/home/search", consumes = "application/json", produces = "application/json")
+    public List<BookEntityRequest> getBookWithFilter(@RequestBody FilterBookEntityRequest filters){
+        
+        Boolean titreSearched = false;
+        if(filters.getTitre() != null){
+            titreSearched = true;
+        }
+        
+        List<BookEntity> listBooks = new ArrayList<BookEntity>();
+
+        if(titreSearched){
+            listBooks = bookRepository.getWithTitre("%" + filters.getTitre() + "%");
+        }
+
+        List<BookEntityRequest> listBooksComplete = new ArrayList<BookEntityRequest>();
+        for (BookEntity book : listBooks) {
+            listBooksComplete.add(getBookComplet(book));
+        }
+
+        return listBooksComplete;
+    }
+
+    private BookEntityRequest getBookComplet(BookEntity book){
+
+        BookEntityRequest bookComplet = new BookEntityRequest();
+
+        //on recuepre directement toutes les informations dans l'objet
+        bookComplet.setDateajout(book.getDateajout());
+
+        //on set tous les champs ID
+        bookComplet.setId(book.getId());
+        bookComplet.setIdcategorie(book.getIdcategorie());
+        bookComplet.setIdlangue(book.getIdlangue());
+        bookComplet.setIduserajout(book.getIduserajout());
+        bookComplet.setIdgenre(book.getIdgenre());
+        bookComplet.setIduservalide(book.getIduservalide());
+
+        //on set tous les champs dates
+        bookComplet.setDateajout(book.getDateajout());
+        bookComplet.setDatepublication(book.getDatepublication());
+        bookComplet.setDatevalidation(book.getDatevalidation());
+        
+        //on set tous les champs textes
+        bookComplet.setResume(book.getResume());
+        bookComplet.setTitre(book.getTitre());
+        bookComplet.setMotcles(book.getMotcles());
+
+        //on set toutes les listes et champ venant d'autres tables
+        bookComplet.setLangue(langueRepository.findById((long) book.getIdlangue()).get());
+        bookComplet.setCategorie(categorieRepository.findById((long) book.getIdcategorie()).get());
+        bookComplet.setGenre(genreRepository.findById((long) book.getIdgenre()).get());
+
+        //on met des try catch au cas ou il y a une erreur lors de la requete
+        //extraits
+        List<ExtraitEntity> listExtrait = new ArrayList<>();
+        try{
+            listExtrait = extraitRepository.findByIdlivre(book.getId());
+        }catch(Exception e){ }
+
+        bookComplet.setListExtraits(listExtrait);
+
+        //articles
+        List<ArticleEntity> listArticle = new ArrayList<>();
+        try{
+            listArticle = articleRepository.findByIdlivre(book.getId());
+        }catch(Exception e){ }
+        bookComplet.setListArticles(listArticle);
+
+        //auteurs
+        List<AuteurEntity> listAuteurs = getListAuteurs(book.getId());
+        bookComplet.setListAuteurs(listAuteurs);
+        
+        //collections
+        List<CollectionEntity> listCollection = getListCollections(book.getId());
+        bookComplet.setListCollections(listCollection);
+
+        //commentaires
+        List<CommentaireEntity> listCommentaires = new ArrayList<>();
+        try{
+            listCommentaires = commentaireRepository.findByIdlivre(book.getId());
+        }catch(Exception e){ }
+        bookComplet.setListCommentaires(listCommentaires);
+
+        //editeurs
+        List<EditeurEntity> listEditeurs = getListEditeurs(book.getId());
+        bookComplet.setListEditeurs(listEditeurs);
+
+        return bookComplet;
+
     }
 
     private List<EditeurEntity> getListEditeurs(long idbook){

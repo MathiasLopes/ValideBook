@@ -32,7 +32,6 @@ function addFunctionShowDrapeau(){
     $("#chooselanguages").click(function(){
         showOrHideAllDrapeau();
     });
-
 }
 
 function showOrHideAllDrapeau(){
@@ -42,7 +41,6 @@ function showOrHideAllDrapeau(){
     }else{
         $(".parent-parentlanguagetochoose").addClass("show")
     }
-
 }
 
 function addAllDrapeau(){
@@ -56,7 +54,6 @@ function addAllDrapeau(){
     }
 
     $(".parent-parentlanguagetochoose").html(htmlToAdd)
-
 }
 
 function loadLanguageWithFile(langue, callback){

@@ -20,8 +20,6 @@ function loadListeBook(){
 
 function fabriqueListeBook(data){
 
-    console.log(data);
-
     var htmllistebook = "";        
 
     if(data != null && data.length > 0){
@@ -45,6 +43,54 @@ function fabriqueListeBook(data){
     return htmllistebook;
 }
 
+function initSearchWithFilter(){
 
+    var filters = {};
+
+    //recupere le titre s'il est recherché
+    filters = verifiyTitleValid(filters);
+    
+    //execute la methode permettant la recherche
+    executeSearchFilter(filters, function(data){
+
+        //executé apres le retour de la requete
+        var listeBook = fabriqueListeBook(data);
+        $("#content-filtrebook-complete").html(listeBook);
+
+    });
+}
+
+function verifiyTitleValid(filters){
+    var titre = $("#filtreTitre").val();
+    if(titre != null && titre != ""){
+        filters.titre = titre;
+    }
+    return filters;
+}
+
+function executeSearchFilter(filters, callback){
+    $(".content-listebook").addClass("toshowsearch");
+    
+    setTimeout(function(){
+        $(".content-listebook").addClass("showsearch");
+
+        setTimeout(function(){
+            $(".content-listebook").removeClass("toshowsearch");
+
+            $.ajax({
+                url:"/home/search",
+                type:"POST",
+                data: JSON.stringify(filters),
+                contentType:"application/json",
+                dataType:"json",
+                success: function(data){
+                    callback(data);
+                }
+            })
+
+        }, 10);
+
+    }, 500);
+}
 
 
