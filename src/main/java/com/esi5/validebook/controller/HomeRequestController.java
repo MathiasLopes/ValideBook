@@ -55,7 +55,9 @@ public class HomeRequestController {
     public List<BookEntityRequest> listebook(){
 
         List<BookEntityRequest> listeBookComplet = new ArrayList<BookEntityRequest>();
-        List<BookEntity> listeBook = bookRepository.findAll();
+        //List<BookEntity> listeBook = bookRepository.findAll();
+
+        List<BookEntity> listeBook = bookRepository.getXLastBookValidate(20);
 
         try{
 
