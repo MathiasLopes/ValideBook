@@ -6,9 +6,14 @@
     "idInvalideOrPasswordForgotten": "Invalid username or password",
     "champDisconnected":"You have been disconnected",
     "textTitleBook": "Title :",
+    "textTitleFilters": "Title",
     "textLangueBook": "Language :",
     "textDateBook": "Date added :",
     "textBtDeconnexion":"Log out",
     "textTitle20livre": "Last 20 books added :",
-    "textTitleSearch": "Search :"
+    "textTitleSearch": "Search :",
+    "textAucunBookTrouve": "No book found",
+    "textTitleWindowBookFilter": "Books found :",
+    "textBtnSearch": "Search",
+    "btAnnulerFilters": "Undo filters"
 }

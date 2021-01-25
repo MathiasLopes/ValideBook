@@ -30,14 +30,14 @@ function fabriqueListeBook(data){
 
             htmllistebook += 
                 '<div class="content-unbook">' + 
-                    '<div class="content-column-unbook"><span class="text-title-book">Titre :</span> ' + unLivre.titre + '</div>' +
-                    '<div class="content-column-unbook"><span class="text-langue-book">Langue :</span> ' + unLivre.langue.langue + '</div>' +
-                    '<div class="content-column-unbook"><span class="text-date-book">Date d\'ajout :</span> ' + new Date(unLivre.dateajout).toLocaleString() + '</div>' +
+                    '<div class="content-column-unbook"><span class="text-title-book">' + langue_used.textTitleBook + '</span> ' + unLivre.titre + '</div>' +
+                    '<div class="content-column-unbook"><span class="text-langue-book">' + langue_used.textLangueBook + '</span> ' + unLivre.langue.langue + '</div>' +
+                    '<div class="content-column-unbook"><span class="text-date-book">' + langue_used.textDateBook + '</span> ' + new Date(unLivre.dateajout).toLocaleString() + '</div>' +
                 '</div>';
         }
 
     }else{
-        htmllistebook = "<div class='book-not-found'>Aucun livre retrouvé</div>";
+        htmllistebook = "<div class='book-not-found'>" + langue_used.textAucunBookTrouve + "</div>";
     }
     
     return htmllistebook;
@@ -110,4 +110,18 @@ function getLivresWithFilters(filters, callback){
 
 }
 
+function annuleFilters(){
 
+    $(".content-listebook").addClass("toshowsearch");
+        
+    setTimeout(function(){
+        $(".content-listebook").removeClass("showsearch");
+
+        setTimeout(function(){
+            $(".content-listebook").removeClass("toshowsearch");
+            loadListeBook(); //permet de charger la liste des 20 livres
+        }, 10);
+
+    }, 500);
+
+}

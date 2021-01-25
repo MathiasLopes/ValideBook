@@ -146,3 +146,16 @@ body{
     min-width: 115px;
     width: 50%;
 }
+
+#btAnnulerFiltre{
+    color:white;
+    background-color: #DB4437;
+    display: inline-block;
+    float: right;
+    position: relative;
+    right: 5px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    top: -5px;
+    cursor: pointer;
+}

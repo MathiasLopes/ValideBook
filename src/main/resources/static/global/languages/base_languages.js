@@ -6,11 +6,16 @@ var langue_used = {
     idInvalideOrPasswordForgotten: "Identifiant ou mot de passe invalide",
     champDisconnected:"Vous avez été déconnecté",
     textTitleBook:"Titre :",
+    textTitleFilters: "Titre",
     textLangueBook:"Langue :",
     textDateBook:"Date d'ajout :",
     textBtDeconnexion:"Se déconnecter",
     textTitle20livre: "20 derniers livres ajoutés :",
-    textTitleSearch: "Rechercher :"
+    textTitleSearch: "Rechercher :",
+    textAucunBookTrouve: "Aucun livre retrouvé",
+    textTitleWindowBookFilter: "Livres trouvés :",
+    textBtnSearch: "Rechercher",
+    btAnnulerFilters: "Annuler les filtres"
 }
 
 var jsonlangueforhtml = [{

@@ -14,6 +14,11 @@ function loadLangueHome(){
     $("#btDeconnexion").html(langue_used.textBtDeconnexion);
     $("#title-listbook").html(langue_used.textTitle20livre);
     $("#title-search").html(langue_used.textTitleSearch);
+    $("#btnRechercher").html(langue_used.textBtnSearch);
+    $(".book-not-found").html(langue_used.textAucunBookTrouve);
+    $("#title-filtrebook .title").html(langue_used.textTitleWindowBookFilter);
+    $("#textFiltreTitre").html(langue_used.textTitleFilters);
+    $("#btAnnulerFiltre").html(langue_used.btAnnulerFilters);
 }
 
 //méthode par défaut permettant à chaque site de charger sa langue avec le module de langue ajouté
