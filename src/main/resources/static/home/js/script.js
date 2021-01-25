@@ -69,28 +69,45 @@ function verifiyTitleValid(filters){
 }
 
 function executeSearchFilter(filters, callback){
-    $(".content-listebook").addClass("toshowsearch");
-    
-    setTimeout(function(){
-        $(".content-listebook").addClass("showsearch");
+
+    //si la class showsearch n'est pas encore attaché, alors on affiche la fenêtre
+    if(!$(".content-listebook").hasClass("showsearch")){
+
+        $(".content-listebook").addClass("toshowsearch");
+        
+        setTimeout(function(){
+            $(".content-listebook").addClass("showsearch");
+
+            setTimeout(function(){
+                $(".content-listebook").removeClass("toshowsearch");
+                getLivresWithFilters(filters, callback);
+            }, 10);
+
+        }, 500);
+
+    //sinon on affiche le loading avant de faire la récupération du filtre
+    }else{
+        $("#content-filtrebook-complete").html(html_loading);
 
         setTimeout(function(){
-            $(".content-listebook").removeClass("toshowsearch");
+            getLivresWithFilters(filters, callback);
+        }, 1000);
+    }
+}
 
-            $.ajax({
-                url:"/home/search",
-                type:"POST",
-                data: JSON.stringify(filters),
-                contentType:"application/json",
-                dataType:"json",
-                success: function(data){
-                    callback(data);
-                }
-            })
+function getLivresWithFilters(filters, callback){
 
-        }, 10);
+    $.ajax({
+        url:"/home/search",
+        type:"POST",
+        data: JSON.stringify(filters),
+        contentType:"application/json",
+        dataType:"json",
+        success: function(data){
+            callback(data);
+        }
+    })
 
-    }, 500);
 }
 
 
