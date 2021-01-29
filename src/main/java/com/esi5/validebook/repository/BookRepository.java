@@ -19,4 +19,10 @@ public interface BookRepository extends JpaRepository<BookEntity, Long> {
 
     @Query(value="select * from book where titre like :titre", nativeQuery=true)
     List<BookEntity> getWithTitre(@Param("titre") String titre);
+
+    @Query(value="select * from book, langues where book.idlangue = langues.id and langues.langue like :langue", nativeQuery=true)
+    List<BookEntity> getWithLangue(@Param("langue") String langue);
+
+    @Query(value="select * from book, langues where book.idlangue = langues.id and book.titre like :titre and langues.langue like :langue", nativeQuery=true)
+    List<BookEntity> getWithTitreAndLangue(@Param("titre") String titre, @Param ("langue") String langue);
 }

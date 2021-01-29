@@ -49,6 +49,8 @@ function initSearchWithFilter(){
 
     //recupere le titre s'il est recherché
     filters = verifiyTitleValid(filters);
+    //recupere la langue si elle est recherché
+    filters = verifiyLangueValid(filters);
     
     //execute la methode permettant la recherche
     executeSearchFilter(filters, function(data){
@@ -64,6 +66,14 @@ function verifiyTitleValid(filters){
     var titre = $("#filtreTitre").val();
     if(titre != null && titre != ""){
         filters.titre = titre;
+    }
+    return filters;
+}
+
+function verifiyLangueValid(filters){
+    var langue = $("#selectLangue").val();
+    if(langue != null && langue != null){
+        filters.langue = langue;
     }
     return filters;
 }

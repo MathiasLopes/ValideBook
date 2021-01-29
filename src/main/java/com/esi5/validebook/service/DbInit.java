@@ -123,7 +123,7 @@ public class DbInit implements CommandLineRunner {
             unBook.setDatevalidation(new Date());
             unBook.setIdcategorie(rand.nextInt(3 - 1 + 1) + 1);
             unBook.setIdgenre(rand.nextInt(3 - 1 + 1) + 1);
-            unBook.setIdlangue(rand.nextInt(2 - 1 + 1) + 1);
+            unBook.setIdlangue(rand.nextInt(4 - 1 + 1) + 1);
             unBook.setIduserajout(i);
             unBook.setIduservalide(i);
             unBook.setMotcles("test" + Integer.toString(i));

@@ -13,6 +13,7 @@ import com.esi5.validebook.entity.CommentaireEntity;
 import com.esi5.validebook.entity.EditeurEntity;
 import com.esi5.validebook.entity.EditeurHasBookEntity;
 import com.esi5.validebook.entity.ExtraitEntity;
+import com.esi5.validebook.entity.LangueEntity;
 import com.esi5.validebook.entity.ForWebRequest.BookEntityRequest;
 import com.esi5.validebook.entity.ForWebRequest.FilterBookEntityRequest;
 import com.esi5.validebook.repository.*;
@@ -97,16 +98,7 @@ public class HomeRequestController {
     @PostMapping(value = "/home/search", consumes = "application/json", produces = "application/json")
     public List<BookEntityRequest> getBookWithFilter(@RequestBody FilterBookEntityRequest filters){
         
-        Boolean titreSearched = false;
-        if(filters.getTitre() != null){
-            titreSearched = true;
-        }
-        
-        List<BookEntity> listBooks = new ArrayList<BookEntity>();
-
-        if(titreSearched){
-            listBooks = bookRepository.getWithTitre("%" + filters.getTitre() + "%");
-        }
+        List<BookEntity> listBooks = recuperationListBooksEnFonctionDeTousLesCas(filters);
 
         List<BookEntityRequest> listBooksComplete = new ArrayList<BookEntityRequest>();
         for (BookEntity book : listBooks) {
@@ -114,6 +106,48 @@ public class HomeRequestController {
         }
 
         return listBooksComplete;
+    }
+
+    public enum FiltersSearched {
+        titre(1),
+        langue(2);
+
+        private final Integer id;
+         /*
+        * @param rank should be byte
+        */
+        private FiltersSearched(Integer id)
+        {
+            this.id=id;
+        }
+    }
+
+    private List<BookEntity> recuperationListBooksEnFonctionDeTousLesCas(FilterBookEntityRequest filters){
+
+        int filtersSearched = 0;
+
+        Boolean titreSearched = false;
+        if(filters.getTitre() != null){
+            filtersSearched += FiltersSearched.titre.id;
+        }
+
+        Boolean langueSearched = false;
+        if(filters.getLangue() != null){
+            filtersSearched += FiltersSearched.langue.id;
+        }
+
+        List<BookEntity> listBooks = new ArrayList<BookEntity>();
+
+        //attention, ici est un filtre grace au byte
+        if(filtersSearched == 1){ //filtre titre uniquement
+            listBooks = bookRepository.getWithTitre("%" + filters.getTitre() + "%");
+        }else if(filtersSearched == 2){ //filtre langue uniquement
+            listBooks = bookRepository.getWithLangue("%" + filters.getLangue() + "%");
+        }else if(filtersSearched == 3){ //filtre titre + langue
+            listBooks = bookRepository.getWithTitreAndLangue("%" + filters.getTitre() + "%", "%" + filters.getLangue() + "%");
+        }
+
+        return listBooks;
     }
 
     private BookEntityRequest getBookComplet(BookEntity book){

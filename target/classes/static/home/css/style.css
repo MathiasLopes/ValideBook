@@ -159,3 +159,7 @@ body{
     top: -5px;
     cursor: pointer;
 }
+
+.un_filtre .group{
+    margin-bottom: 20px !important;
+}

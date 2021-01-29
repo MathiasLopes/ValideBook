@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" th:href="@{/global/css/all.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{/global/css/loading.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/global/css/input.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/global/css/select.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/home/css/style.css}" />
         
         <script th:src="@{/global/js/jquery-3.5.1.min.js}"></script>
@@ -71,6 +72,8 @@
             <div class="conteneur content-searchwindow">
                 <div id="title-search" class="title-conteneur">Rechercher :</div>
                 <div id="content-searchbook-complete">
+
+                    <!-- filtre titre -->
                     <div class="un_filtre">
                         <div class="input-group mb-3">
                             <div class="group">
@@ -81,6 +84,24 @@
                             </div>
                         </div>
                     </div>
+                    <!-- fin -->
+
+                    <!-- filtre titre -->
+                    <div class="un_filtre">
+                        <label class="titleInSelect" id="textFiltreLangue">Langue</label>
+                        <div include="form-input-select()">
+                            <select id="selectLangue" required>
+                              <option value="">Langue</option>
+                              <!-- normal options -->
+                              <option value="francais">Français</option>
+                              <option value="anglais">Anglais</option>
+                              <option value="tamazight">Tamazight</option>
+                              <option value="arabe">Arabe</option>
+                            </select>
+                          </div>
+                    </div>
+                    <!-- fin -->
+
                 </div>
                 <div id="btnRechercher" onclick="initSearchWithFilter();" data-rippleria data-rippleria-color="rgba(0,0,0,.35)" class="btn-validation">Rechercher</div>
             </div>
