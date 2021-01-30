@@ -137,7 +137,7 @@ body{
 }
 
 #content-searchbook-complete{
-    padding: 35px 25px;
+    padding: 15px 25px;
 }
 
 #btnRechercher{
@@ -162,4 +162,12 @@ body{
 
 .un_filtre .group{
     margin-bottom: 20px !important;
+}
+
+.un_filtre input{
+    transition: 0.2s;
+}
+
+.un_filtre input:focus, .un_filtre input:valid {
+    margin-top: 28px;
 }

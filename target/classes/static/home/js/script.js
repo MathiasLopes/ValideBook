@@ -4,10 +4,23 @@ const html_loading = '<div class="content-loading"><svg class="spinner" width="6
 
 //executé lorsque la page a chargé
 $(document).ready(function(){
+
+    initElementsIHM();
+
     setTimeout(function(){
         loadListeBook();
     }, 2000);
 })
+
+//permet d'initialiser certaines éléments de l'interface
+function initElementsIHM(){
+
+    //initialise l'input de date publication
+    $("#datePublication").datepicker({
+        dateFormat: "dd/mm/yy"
+    });  
+
+}
 
 function loadListeBook(){
     $.get(
@@ -51,7 +64,11 @@ function initSearchWithFilter(){
     filters = verifiyTitleValid(filters);
     //recupere la langue si elle est recherché
     filters = verifiyLangueValid(filters);
+    //recupere la date de publication sélectionné par l'utilisateur
+    filters = verifiyDatePublicationValid(filters);
     
+    console.log(filters);
+
     //execute la methode permettant la recherche
     executeSearchFilter(filters, function(data){
 
@@ -72,8 +89,19 @@ function verifiyTitleValid(filters){
 
 function verifiyLangueValid(filters){
     var langue = $("#selectLangue").val();
-    if(langue != null && langue != null){
+    if(langue != null && langue != ""){
         filters.langue = langue;
+    }
+    return filters;
+}
+
+function verifiyDatePublicationValid(filters){
+    var datepublication = $("#datePublication").val();
+    if(datepublication != null && datepublication != ""){
+        datepublication = parseDateToMySqlFormat(datepublication);
+        if(datepublication != null){
+            filters.datepublication = datepublication;
+        }
     }
     return filters;
 }

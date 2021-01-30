@@ -10,7 +10,7 @@
        The percentage width is a fallback since FF 4+ supports calc() so we can just add a fixed amount of extra width to push the native arrow out of view. We're applying this hack across all FF versions because all the previous hacks were too fragile and complex.
        You might want to consider not using this hack and using the native select arrow in FF. Note this makes the menus wider than the select button because they display at the specified width and aren't clipped. Targeting hack via http://browserhacks.com/#hack-758bff81c5c32351b02e10480b5ed48e */
     /* Show only the native arrow */
-    color: #005BA6;
+    color: #4285f4;
     display: block;
     border-radius: 0;
     box-shadow: none;
@@ -107,21 +107,21 @@
       border-right: 3px solid #E6E6E6;
     }
     [include*="form-input-select()"]:hover {
-      border-right: 3px solid #005BA6;
+      border-right: 3px solid #4285f4;
     }
   }
   [include*="form-input-select()"]:hover select {
     box-shadow: 0 2px 3px rgba(0, 91, 166, 0.1) inset;
-    border-color: #005BA6;
+    border-color: #4285f4;
   }
   [include*="form-input-select()"]:hover select:focus {
     outline-color: transparent;
   }
   [include*="form-input-select()"]:hover::before {
-    border-bottom-color: #005BA6;
+    border-bottom-color: #4285f4;
   }
   [include*="form-input-select()"]:hover::after {
-    border-top-color: #005BA6;
+    border-top-color: #4285f4;
   }
   [include*="form-input-select()"] select {
     border: 3px solid #E6E6E6;
@@ -134,7 +134,7 @@
   }
   [include*="form-input-select()"] select:focus {
     box-shadow: 0 3px 4px rgba(0, 91, 166, 0.3) inset;
-    outline: 3px solid #005BA6;
+    outline: 3px solid #4285f4;
     outline-offset: -3px;
   }
   [include*="form-input-select()"] select[disabled], [include*="form-input-select()"] select:disabled {

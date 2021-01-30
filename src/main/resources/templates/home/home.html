@@ -3,6 +3,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
+        <link rel="stylesheet" type="text/css" th:href="@{/global/packages/jquery/jquery-ui/jquery-ui.min.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/global/packages/rippleria/jquery.rippleria.min.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/global/css/all.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{/global/css/loading.css}" />
@@ -10,7 +11,8 @@
         <link rel="stylesheet" type="text/css" th:href="@{/global/css/select.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/home/css/style.css}" />
         
-        <script th:src="@{/global/js/jquery-3.5.1.min.js}"></script>
+        <script th:src="@{/global/packages/jquery/jquery/jquery-3.5.1.min.js}"></script>
+        <script th:src="@{/global/packages/jquery/jquery-ui/jquery-ui.min.js}"></script>
         <script th:src="@{/global/packages/rippleria/jquery.rippleria.min.js}"></script>
         
         <!-- importation des languages -->
@@ -23,6 +25,7 @@
 
         <script th:src="@{/home/js/home_language.js}"></script>
         <script th:src="@{/global/js/show-conteneur-on-load.js}"></script>
+        <script th:src="@{/global/js/functionForAll.js}"></script>
         <script th:src="@{/home/js/script.js}"></script>
     </head>
     <body>
@@ -86,7 +89,7 @@
                     </div>
                     <!-- fin -->
 
-                    <!-- filtre titre -->
+                    <!-- filtre langue -->
                     <div class="un_filtre">
                         <label class="titleInSelect" id="textFiltreLangue">Langue</label>
                         <div include="form-input-select()">
@@ -101,6 +104,19 @@
                           </div>
                     </div>
                     <!-- fin -->
+
+                    <!-- filtre date publication -->
+                    <!-- filtre titre -->
+                    <div class="un_filtre">
+                        <div class="input-group mb-3">
+                            <div class="group">
+                                <input id="datePublication" class="filtreinput" type="text" required/>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label >Date de publication</label>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div id="btnRechercher" onclick="initSearchWithFilter();" data-rippleria data-rippleria-color="rgba(0,0,0,.35)" class="btn-validation">Rechercher</div>

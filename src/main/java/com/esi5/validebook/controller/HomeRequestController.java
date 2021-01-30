@@ -57,7 +57,6 @@ public class HomeRequestController {
     @Autowired
     EditeurRepository editeurRepository;
     
-
     @GetMapping("/home/listebooks")
     public List<BookEntityRequest> listebook(){
 
@@ -108,9 +107,11 @@ public class HomeRequestController {
         return listBooksComplete;
     }
 
+    //ce systeme est géré en puissance de 2 (toujours multiplié par 2 le dernier chiffre pour qu'il soit correcte)
     public enum FiltersSearched {
         titre(1),
-        langue(2);
+        langue(2),
+        datepublication(4);
 
         private final Integer id;
          /*
@@ -127,13 +128,19 @@ public class HomeRequestController {
         int filtersSearched = 0;
 
         Boolean titreSearched = false;
-        if(filters.getTitre() != null){
+        if(filters.getTitre() != null && !filters.getTitre().equals("")){
             filtersSearched += FiltersSearched.titre.id;
         }
 
         Boolean langueSearched = false;
-        if(filters.getLangue() != null){
+        if(filters.getLangue() != null && !filters.getLangue().equals("")){
             filtersSearched += FiltersSearched.langue.id;
+        }
+
+        Boolean datepublicationSearched = false;
+        if(filters.getDatepublication() != null && 
+        !filters.getDatepublication().equals("")){
+            filtersSearched += FiltersSearched.datepublication.id;
         }
 
         List<BookEntity> listBooks = new ArrayList<BookEntity>();
@@ -145,6 +152,14 @@ public class HomeRequestController {
             listBooks = bookRepository.getWithLangue("%" + filters.getLangue() + "%");
         }else if(filtersSearched == 3){ //filtre titre + langue
             listBooks = bookRepository.getWithTitreAndLangue("%" + filters.getTitre() + "%", "%" + filters.getLangue() + "%");
+        }else if(filtersSearched == 4){ //filtres date publication uniquement
+            listBooks = bookRepository.getWithDatePublication(filters.getDatepublicationdebut(), filters.getDatepublicationfin());
+        }else if(filtersSearched == 5){ //filters date publication + titre
+            listBooks = bookRepository.getWithTitreAndDatePublication("%" + filters.getTitre() + "%", filters.getDatepublicationdebut(), filters.getDatepublicationfin());
+        }else if(filtersSearched == 6){ //filters langue + date publication
+            listBooks = bookRepository.getWithLangueAndDatePublication("%" + filters.getLangue() + "%", filters.getDatepublicationdebut(), filters.getDatepublicationfin());
+        }else if(filtersSearched == 7){ // filters titre + langue + date publication
+            listBooks = bookRepository.getWithTitreAndLangueAndDatePublication("%" + filters.getTitre() + "%", "%" + filters.getLangue() + "%", filters.getDatepublicationdebut(), filters.getDatepublicationfin());
         }
 
         return listBooks;
