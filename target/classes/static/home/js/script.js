@@ -43,9 +43,10 @@ function fabriqueListeBook(data){
 
             htmllistebook += 
                 '<div class="content-unbook">' + 
-                    '<div class="content-column-unbook"><span class="text-title-book">' + langue_used.textTitleBook + '</span> ' + unLivre.titre + '</div>' +
-                    '<div class="content-column-unbook"><span class="text-langue-book">' + langue_used.textLangueBook + '</span> ' + unLivre.langue.langue + '</div>' +
-                    '<div class="content-column-unbook"><span class="text-date-book">' + langue_used.textDateBook + '</span> ' + new Date(unLivre.dateajout).toLocaleString() + '</div>' +
+                    '<div class="iconeBook"><i class="fas fa-book"></i></div>' + 
+                    '<div class="content-column-unbook"><span class="text-for-book text-title-book">' + langue_used.textTitleBook + '</span> ' + unLivre.titre + '</div>' +
+                    '<div class="content-column-unbook"><span class="text-for-book text-langue-book">' + langue_used.textLangueBook + '</span> ' + unLivre.langue.langue + '</div>' +
+                    '<div class="content-column-unbook"><span class="text-for-book text-date-book">' + langue_used.textDateBook + '</span> ' + new Date(unLivre.dateajout).toLocaleString() + '</div>' +
                 '</div>';
         }
 

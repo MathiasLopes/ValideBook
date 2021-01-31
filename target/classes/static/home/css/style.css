@@ -1,6 +1,6 @@
 body{
     font-family: Roboto;
-    background-color: #4285F4;
+    background: linear-gradient(0.4turn, #8af0ff, #4285F4);
 }
 
 .conteneur{
@@ -109,6 +109,9 @@ body{
     margin-left: auto;
     border-bottom: 1px solid #CCC;
     margin-right: auto;
+    padding: 5px 6px;
+    padding-bottom: 8px;
+    position: relative;
 }
 
 .content-unbook:hover{
@@ -117,12 +120,16 @@ body{
     border-bottom: 1px solid #FFF;
     z-index: 2;
     position: relative;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .content-column-unbook{
     padding:5px 20px 5px 20px;
     text-align: left;
+
+    background-color: #FAFAFA;
+    border-radius: 10px;
+    margin-top: 5px;
 }
 
 .book-not-found{
@@ -170,4 +177,20 @@ body{
 
 .un_filtre input:focus, .un_filtre input:valid {
     margin-top: 28px;
+}
+
+.text-for-book{
+    color:#AAA;
+}
+
+.iconeBook{
+    float: left;
+    color: #FFF;
+    font-size: 35px;
+    position: absolute;
+    right: 6px;
+    top: 34px;
+    background-color: #4285F477;
+    border-radius: 8px;
+    padding: 8px;
 }

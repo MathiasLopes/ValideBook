@@ -56,12 +56,12 @@ public class HomeRequestController {
     EditeurHasBookRepository editeurHasBookRepository;
     @Autowired
     EditeurRepository editeurRepository;
-    
+
+
     @GetMapping("/home/listebooks")
     public List<BookEntityRequest> listebook(){
 
         List<BookEntityRequest> listeBookComplet = new ArrayList<BookEntityRequest>();
-        //List<BookEntity> listeBook = bookRepository.findAll();
 
         List<BookEntity> listeBook = bookRepository.getXLastBookValidate(20);
 

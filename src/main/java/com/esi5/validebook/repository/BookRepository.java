@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import com.esi5.validebook.entity.BookEntity;
