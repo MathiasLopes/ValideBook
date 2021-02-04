@@ -129,7 +129,7 @@ public class DbInit implements CommandLineRunner {
             unBook.setDatepublication(new Date());
             unBook.setDatevalidation(new Date());
             unBook.setIdcategorie(rand.nextInt(3 - 1 + 1) + 1);
-            unBook.setIdtheme(1);
+            unBook.setIdtheme(rand.nextInt(10 - 1 + 1) + 1);
             unBook.setIdgenre(rand.nextInt(3 - 1 + 1) + 1);
             unBook.setIdlangue(rand.nextInt(4 - 1 + 1) + 1);
             unBook.setIduserajout(i);
@@ -250,12 +250,7 @@ public class DbInit implements CommandLineRunner {
         ThemeEntity theme2 = new ThemeEntity();
         i++;
         theme2.setId(i);
-        theme2.setNom("Arthropologie et sciences du langage");
-
-        ThemeEntity theme3 = new ThemeEntity();
-        i++;
-        theme3.setId(i);
-        theme3.setNom("Arthropologie et sciences du langage");
+        theme2.setNom("Anthropologie et sciences du langage");
 
         ThemeEntity theme4 = new ThemeEntity();
         i++;
@@ -299,7 +294,6 @@ public class DbInit implements CommandLineRunner {
 
         themeRepository.saveAndFlush(theme1);
         themeRepository.saveAndFlush(theme2);
-        themeRepository.saveAndFlush(theme3);
         themeRepository.saveAndFlush(theme4);
         themeRepository.saveAndFlush(theme5);
         themeRepository.saveAndFlush(theme6);
