@@ -40,6 +40,8 @@ public class DbInit implements CommandLineRunner {
     GenreRepository genreRepository;
     @Autowired
     ExtraitRepository extraitRepository;
+    @Autowired
+    ThemeRepository themeRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -61,6 +63,9 @@ public class DbInit implements CommandLineRunner {
 
         //insertion pour la tale book (livre de tests)
         resetAndInsertBooks();
+
+        //insert pour la table theme
+        resetAndInsertTheme();
 
     }
 
@@ -233,41 +238,77 @@ public class DbInit implements CommandLineRunner {
     //Insertion pour la table utilisateur
     public void resetAndInsertTheme(){
 
-        ThemeRepository.deleteAll();
+        themeRepository.deleteAll();
+
+        Long i = (long) 0;
         
         ThemeEntity theme1 = new ThemeEntity();
-        theme1.getNom("Littérature");
+        i++;
+        theme1.setId(i);
+        theme1.setNom("Littérature");
 
         ThemeEntity theme2 = new ThemeEntity();
-        theme2.getNom("Arthropologie et sciences du langage");
+        i++;
+        theme2.setId(i);
+        theme2.setNom("Arthropologie et sciences du langage");
 
         ThemeEntity theme3 = new ThemeEntity();
-        theme3.getNom("Arthropologie et sciences du langage");
+        i++;
+        theme3.setId(i);
+        theme3.setNom("Arthropologie et sciences du langage");
 
         ThemeEntity theme4 = new ThemeEntity();
-        theme4.getNom("Histoire");
+        i++;
+        theme4.setId(i);
+        theme4.setNom("Histoire");
 
         ThemeEntity theme5 = new ThemeEntity();
-        theme5.getNom("Philosophie, Sociologie");
+        i++;
+        theme5.setId(i);
+        theme5.setNom("Philosophie, Sociologie");
 
         ThemeEntity theme6 = new ThemeEntity();
-        theme6.getNom("Revue, article, scientifique");
+        i++;
+        theme6.setId(i);
+        theme6.setNom("Revue, article, scientifique");
 
         ThemeEntity theme7 = new ThemeEntity();
-        theme7.getNom("Sciences Politiques");
+        i++;
+        theme7.setId(i);
+        theme7.setNom("Sciences Politiques");
 
         ThemeEntity theme8 = new ThemeEntity();
-        theme8.getNom("Citations");
+        i++;
+        theme8.setId(i);
+        theme8.setNom("Citations");
 
         ThemeEntity theme9 = new ThemeEntity();
-        theme9.getNom("Proverbe");
+        i++;
+        theme9.setId(i);
+        theme9.setNom("Proverbe");
         
         ThemeEntity theme10 = new ThemeEntity();
-        theme10.getNom("Adages");
+        i++;
+        theme10.setId(i);
+        theme10.setNom("Adages");
         
         ThemeEntity theme11 = new ThemeEntity();
-        theme11.getNom("Dictons"); 
+        i++;
+        theme11.setId(i);
+        theme11.setNom("Dictons"); 
 
+        themeRepository.saveAndFlush(theme1);
+        themeRepository.saveAndFlush(theme2);
+        themeRepository.saveAndFlush(theme3);
+        themeRepository.saveAndFlush(theme4);
+        themeRepository.saveAndFlush(theme5);
+        themeRepository.saveAndFlush(theme6);
+        themeRepository.saveAndFlush(theme7);
+        themeRepository.saveAndFlush(theme8);
+        themeRepository.saveAndFlush(theme9);
+        themeRepository.saveAndFlush(theme10);
+        themeRepository.saveAndFlush(theme11);
+        
     }
 
 }
