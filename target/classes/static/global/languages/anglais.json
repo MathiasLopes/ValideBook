@@ -3,6 +3,7 @@
     "btSeConnecter": "Log in",
     "champEmail": "Email",
     "champPassword": "Password",
+    "champNomComplet": "Full name",
     "idInvalideOrPasswordForgotten": "Invalid username or password",
     "champDisconnected":"You have been disconnected",
     "textTitleBook": "Title :",
@@ -15,5 +16,6 @@
     "textAucunBookTrouve": "No book found",
     "textTitleWindowBookFilter": "Books found :",
     "textBtnSearch": "Search",
-    "btAnnulerFilters": "Undo filters"
+    "btAnnulerFilters": "Undo filters",
+    "dejaInscrit": "Already registered ?"
 }

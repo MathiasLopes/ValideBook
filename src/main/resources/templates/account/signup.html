@@ -16,8 +16,8 @@
         <link rel="stylesheet" type="text/css" th:href="@{/global/languages/base_languages.css}"/>
         <script th:src="@{/global/languages/base_languages.js}"></script>
 
-        <script th:src="@{/login/js/login_language.js}"></script>
-        <script th:src="@{/login/js/login.js}"></script>
+        <script th:src="@{/signup/js/signup_language.js}"></script>
+        <script th:src="@{/signup/js/signup.js}"></script>
 
     </head>
     <body class="hold-transition login-page">
@@ -60,12 +60,12 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row" style="margin-bottom:10px;">
                                 <div class="col-4">
                                     <button id="btnSIncrire" type="submit" data-rippleria data-rippleria-color="rgba(0,0,0,.35)" class="btn-validation">S'incrire</button>
                                 </div>
                             </div>
-                            <b><a href="/login">Déjà inscrit ?</a></b>
+                            <b><a  id="linkDejainscript" href="/login">Déjà inscrit ?</a></b>
                         </form>
                     </div>
                 </div>
