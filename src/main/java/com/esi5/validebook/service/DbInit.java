@@ -7,11 +7,13 @@ import com.esi5.validebook.entity.CategorieEntity;
 import com.esi5.validebook.entity.ExtraitEntity;
 import com.esi5.validebook.entity.GenreEntity;
 import com.esi5.validebook.entity.LangueEntity;
+import com.esi5.validebook.entity.ThemeEntity;
 import com.esi5.validebook.repository.BookRepository;
 import com.esi5.validebook.repository.CategorieRepository;
 import com.esi5.validebook.repository.ExtraitRepository;
 import com.esi5.validebook.repository.GenreRepository;
 import com.esi5.validebook.repository.LangueRepository;
+import com.esi5.validebook.repository.ThemeRepository;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -225,6 +227,46 @@ public class DbInit implements CommandLineRunner {
         unExtrait.setIdlivre(idbook);
         unExtrait.setExtrait("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
         extraitRepository.saveAndFlush(unExtrait);
+    }
+
+    //Insertion pour la table utilisateur
+    public void resetAndInsertTheme(){
+
+        ThemeRepository.deleteAll();
+        
+        ThemeEntity theme1 = new ThemeEntity();
+        theme1.getNom("Littérature");
+
+        ThemeEntity theme2 = new ThemeEntity();
+        theme2.getNom("Arthropologie et sciences du langage");
+
+        ThemeEntity theme3 = new ThemeEntity();
+        theme3.getNom("Arthropologie et sciences du langage");
+
+        ThemeEntity theme4 = new ThemeEntity();
+        theme4.getNom("Histoire");
+
+        ThemeEntity theme5 = new ThemeEntity();
+        theme5.getNom("Philosophie, Sociologie");
+
+        ThemeEntity theme6 = new ThemeEntity();
+        theme6.getNom("Revue, article, scientifique");
+
+        ThemeEntity theme7 = new ThemeEntity();
+        theme7.getNom("Sciences Politiques");
+
+        ThemeEntity theme8 = new ThemeEntity();
+        theme8.getNom("Citations");
+
+        ThemeEntity theme9 = new ThemeEntity();
+        theme9.getNom("Proverbe");
+        
+        ThemeEntity theme10 = new ThemeEntity();
+        theme10.getNom("Adages");
+        
+        ThemeEntity theme11 = new ThemeEntity();
+        theme11.getNom("Dictons"); 
+
     }
 
 }
