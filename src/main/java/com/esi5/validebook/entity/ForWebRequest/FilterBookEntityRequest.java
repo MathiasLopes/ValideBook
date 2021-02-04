@@ -5,6 +5,7 @@ public class FilterBookEntityRequest {
     private String titre;
     private String langue;
     private String datepublication;
+    private String theme;
 
     public String getTitre() {
         return titre;
@@ -38,6 +39,14 @@ public class FilterBookEntityRequest {
     //ne pas utiliser si le champ datepublication est null !
     public String getDatepublicationfin(){
         return datepublication + " 23:59:59";
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
     }
 
 }

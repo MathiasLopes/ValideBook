@@ -2,6 +2,7 @@
 //contient le code html nécessaire à l'affichage d'un loading (possible d'utiliser cette constante pour afficher un loader)
 const html_loading = '<div class="content-loading"><svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div>';
 var langue_for_book = "francais";
+var theme_for_book = "";
 
 //executé lorsque la page a chargé
 $(document).ready(function(){
@@ -28,7 +29,7 @@ function setLangueForBook(langueSelected){
         setTimeout(function(){
 
             // a voir apres
-            loadListeBook(langueSelected);
+            loadListeBook(langue_for_book);
 
             $(".content-listebook").addClass("show");
             $(".content-searchwindow").addClass("show");
@@ -115,6 +116,8 @@ function initSearchWithFilter(){
     filters = verifiyLangueValid(filters);
     //recupere la date de publication sélectionné par l'utilisateur
     filters = verifiyDatePublicationValid(filters);
+    //recupere le theme sélectionné par l'utilisateur
+    filters = verifyThemeValid(filters);
     
     console.log(filters);
 
@@ -137,9 +140,17 @@ function verifiyTitleValid(filters){
 }
 
 function verifiyLangueValid(filters){
-    var langue = $("#selectLangue").val();
+    var langue = langue_for_book; //on set avec la variable pour que le champ soit toujours actif
     if(langue != null && langue != ""){
         filters.langue = langue;
+    }
+    return filters;
+}
+
+function verifyThemeValid(filters){
+    var theme = theme_for_book;
+    if(theme != null && theme != ""){
+        filters.theme = theme;
     }
     return filters;
 }
@@ -206,7 +217,7 @@ function annuleFilters(){
 
         setTimeout(function(){
             $(".content-listebook").removeClass("toshowsearch");
-            loadListeBook(langueSelected); //permet de charger la liste des 20 livres
+            loadListeBook(langue_for_book); //permet de charger la liste des 20 livres
         }, 10);
 
     }, 500);

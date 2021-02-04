@@ -56,6 +56,8 @@ public class HomeRequestController {
     EditeurHasBookRepository editeurHasBookRepository;
     @Autowired
     EditeurRepository editeurRepository;
+    @Autowired
+    ThemeRepository themeRepository;
 
 
     @GetMapping("/home/listebooks")
@@ -111,7 +113,8 @@ public class HomeRequestController {
     public enum FiltersSearched {
         titre(1),
         langue(2),
-        datepublication(4);
+        datepublication(4),
+        theme(8);
 
         private final Integer id;
          /*
@@ -143,6 +146,12 @@ public class HomeRequestController {
             filtersSearched += FiltersSearched.datepublication.id;
         }
 
+        Boolean themeSearched = false;
+        if(filters.getTheme() != null && 
+        !filters.getTheme().equals("")){
+            filtersSearched += FiltersSearched.theme.id;
+        }
+
         List<BookEntity> listBooks = new ArrayList<BookEntity>();
 
         //attention, ici est un filtre grace au byte
@@ -160,6 +169,22 @@ public class HomeRequestController {
             listBooks = bookRepository.getWithLangueAndDatePublication("%" + filters.getLangue() + "%", filters.getDatepublicationdebut(), filters.getDatepublicationfin());
         }else if(filtersSearched == 7){ // filters titre + langue + date publication
             listBooks = bookRepository.getWithTitreAndLangueAndDatePublication("%" + filters.getTitre() + "%", "%" + filters.getLangue() + "%", filters.getDatepublicationdebut(), filters.getDatepublicationfin());
+        }else if(filtersSearched == 8){ //filters theme
+            listBooks = bookRepository.getWithTheme(filters.getTheme());
+        }else if(filtersSearched == 9){ //filters theme + titre
+            listBooks = bookRepository.getWithThemeAndTitre(filters.getTheme(), "%" + filters.getTitre() + "%");
+        }else if(filtersSearched == 10){ //filters theme + langue
+            listBooks = bookRepository.getWithThemeAndLangue(filters.getTheme(), "%" + filters.getLangue() + "%");
+        }else if(filtersSearched == 11){ //filters theme + titre + langue
+            listBooks = bookRepository.getWithThemeAndTitreAndLangue(filters.getTheme(), "%" + filters.getTitre() + "%", "%" + filters.getLangue() + "%");
+        }else if(filtersSearched == 12){ //filters theme + date publication
+            listBooks = bookRepository.getWithThemeAndDatePublication(filters.getTheme(), filters.getDatepublicationdebut(), filters.getDatepublicationfin());
+        }else if(filtersSearched == 13){ //filters theme + date publication + titre
+            listBooks = bookRepository.getWithThemeAndDatePublicationAndTitre(filters.getTheme(), filters.getDatepublicationdebut(), filters.getDatepublicationfin(), "%" + filters.getTitre() + "%");
+        }else if(filtersSearched == 14){ //filters theme + date publication + langue
+            listBooks = bookRepository.getWithThemeAndDatePublicationAndLangue(filters.getTheme(), filters.getDatepublicationdebut(), filters.getDatepublicationfin(), "%" + filters.getLangue() + "%");
+        }else if(filtersSearched == 15){ //filters theme + date publication + langue + titre
+            listBooks = bookRepository.getWithThemeAndDatePublicationAndLangueAndTitre(filters.getTheme(), filters.getDatepublicationdebut(), filters.getDatepublicationfin(), "%" + filters.getTitre() + "%", "%" + filters.getLangue() + "%");
         }
 
         return listBooks;
@@ -193,6 +218,7 @@ public class HomeRequestController {
         //on set toutes les listes et champ venant d'autres tables
         bookComplet.setLangue(langueRepository.findById((long) book.getIdlangue()).get());
         bookComplet.setCategorie(categorieRepository.findById((long) book.getIdcategorie()).get());
+        bookComplet.setTheme(themeRepository.findById((long) book.getIdtheme()).get());
         bookComplet.setGenre(genreRepository.findById((long) book.getIdgenre()).get());
 
         //on met des try catch au cas ou il y a une erreur lors de la requete
