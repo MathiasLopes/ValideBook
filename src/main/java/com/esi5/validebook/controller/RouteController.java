@@ -11,11 +11,6 @@ public class RouteController {
         return "home/home";
     }
 
-    @GetMapping("/admin")
-    public String admin(){
-        return "admin/admin";
-    }
-
     @GetMapping("/specialiste")
     public String specialiste(){
         return "specialiste/specialiste";
