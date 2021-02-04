@@ -1,6 +1,6 @@
 body{
     font-family: Roboto;
-    background-color: #4285F4;
+    background: linear-gradient(0.4turn, #8af0ff, #4285F4);
 }
 
 .conteneur{
@@ -109,6 +109,9 @@ body{
     margin-left: auto;
     border-bottom: 1px solid #CCC;
     margin-right: auto;
+    padding: 5px 6px;
+    padding-bottom: 8px;
+    position: relative;
 }
 
 .content-unbook:hover{
@@ -117,12 +120,15 @@ body{
     border-bottom: 1px solid #FFF;
     z-index: 2;
     position: relative;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .content-column-unbook{
     padding:5px 20px 5px 20px;
     text-align: left;
+    background-color: #FAFAFA;
+    border-radius: 10px;
+    margin-top: 5px;
 }
 
 .book-not-found{
@@ -170,4 +176,86 @@ body{
 
 .un_filtre input:focus, .un_filtre input:valid {
     margin-top: 28px;
+}
+
+.text-for-book{
+    color:#AAA;
+}
+
+.iconeBook{
+    float: left;
+    color: #FFF;
+    font-size: 35px;
+    position: absolute;
+    right: 6px;
+    top: 34px;
+    background-color: #4285F477;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.contentContentLangueForBook{
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 200px);
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.contentContentLangueForBook.hide{
+    opacity: 0;
+}
+
+.contentContentLangueForBook label{
+    position: relative !important;
+    margin-bottom: 20px;
+    background-color: #EEE4;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #333;
+}
+
+.contentLangueForBook{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.langueForBook{
+    height: 97px;
+    width: 150px;
+    background-size: 100% 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 9px;
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 12px -8px black;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.langueForBook:hover{
+    transform: scale(1.2);
+}
+
+.langueForBook.langueForBookFrancais{
+    background-image: url("/global/languages/images/francais.jpg");
+}
+
+.langueForBook.langueForBookAnglais{
+    background-image: url("/global/languages/images/anglais.jpg");
+}
+
+.langueForBook.langueForBookTamazight{
+    background-image: url("/global/languages/images/tamazight.jpg");
+}
+
+.langueForBook.langueForBookArabe{
+    background-image: url("/global/languages/images/arabe.jpg");
 }

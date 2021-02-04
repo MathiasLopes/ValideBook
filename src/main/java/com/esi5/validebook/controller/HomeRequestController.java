@@ -59,11 +59,11 @@ public class HomeRequestController {
 
 
     @GetMapping("/home/listebooks")
-    public List<BookEntityRequest> listebook(){
+    public List<BookEntityRequest> listebook(String langue){
 
         List<BookEntityRequest> listeBookComplet = new ArrayList<BookEntityRequest>();
 
-        List<BookEntity> listeBook = bookRepository.getXLastBookValidate(20);
+        List<BookEntity> listeBook = bookRepository.getXLastBookValidateWithLangue(langue, 20);
 
         try{
 
