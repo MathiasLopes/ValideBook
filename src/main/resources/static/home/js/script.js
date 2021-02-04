@@ -14,6 +14,7 @@ function backToLangueSelection(){
 
     $(".content-listebook").removeClass("show");
     $(".content-searchwindow").removeClass("show");
+    $(".content-theme").removeClass("show");
 
     setTimeout(function(){
         showSelectLangueForBook();
@@ -33,6 +34,7 @@ function setLangueForBook(langueSelected){
 
             $(".content-listebook").addClass("show");
             $(".content-searchwindow").addClass("show");
+            $(".content-theme").addClass("show");
             
         }, 100)
         
@@ -68,6 +70,9 @@ function initElementsIHM(){
     $("#datePublication").datepicker({
         dateFormat: "dd/mm/yy"
     });  
+
+    //initialise la liste des themes
+    initNavBarForTheme();
 
 }
 
@@ -222,4 +227,38 @@ function annuleFilters(){
 
     }, 500);
 
+}
+
+function initNavBarForTheme(){
+    getAllTheme();
+}
+
+function getAllTheme(){
+    $.get(
+        "/home/listethemes"
+    ).done(function(data){
+        var htmlListeTheme = fabriqueListeThemes(data);
+        $(".content-theme").html(htmlListeTheme);
+    })
+}
+
+function fabriqueListeThemes(themes){
+
+    var htmlForTheme = "";
+
+    for(var i = 0; i < themes.length; i++){
+        var theme = themes[i];
+
+        htmlForTheme += '<div class="unTheme" onclick="searchByTheme(\'' + theme.nom + '\')">';
+        htmlForTheme += theme.nom;
+        htmlForTheme += '</div>';
+
+    }
+
+    return htmlForTheme;
+}
+
+function searchByTheme(theme){
+    theme_for_book = theme;
+    initSearchWithFilter();
 }

@@ -14,6 +14,7 @@ import com.esi5.validebook.entity.EditeurEntity;
 import com.esi5.validebook.entity.EditeurHasBookEntity;
 import com.esi5.validebook.entity.ExtraitEntity;
 import com.esi5.validebook.entity.LangueEntity;
+import com.esi5.validebook.entity.ThemeEntity;
 import com.esi5.validebook.entity.ForWebRequest.BookEntityRequest;
 import com.esi5.validebook.entity.ForWebRequest.FilterBookEntityRequest;
 import com.esi5.validebook.repository.*;
@@ -59,6 +60,11 @@ public class HomeRequestController {
     @Autowired
     ThemeRepository themeRepository;
 
+    @GetMapping("/home/listethemes")
+    public List<ThemeEntity> listethemes(){
+        List<ThemeEntity> listethemes = themeRepository.findAll();
+        return listethemes;
+    }
 
     @GetMapping("/home/listebooks")
     public List<BookEntityRequest> listebook(String langue){

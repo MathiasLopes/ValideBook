@@ -260,3 +260,27 @@ body{
 .langueForBook.langueForBookArabe{
     background-image: url("/global/languages/images/arabe.jpg");
 }
+
+.content-theme{
+    display: flex;
+    font-size: 20px;
+    overflow-x: auto;
+    height: 45px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.unTheme{
+    padding: 5px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: #EFEFEF;
+    margin-right: 3px;
+    border-radius: 7px;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.unTheme:hover{
+    background-color:#CCC;
+}
