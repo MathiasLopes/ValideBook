@@ -5,13 +5,20 @@ var langue_for_book = "francais";
 
 //executé lorsque la page a chargé
 $(document).ready(function(){
-
     initElementsIHM();
-
-    /*setTimeout(function(){
-        loadListeBook();
-    }, 2000);*/
 })
+
+//permet de revenir à la selection de la langue sans recharger la page
+function backToLangueSelection(){
+
+    $(".content-listebook").removeClass("show");
+    $(".content-searchwindow").removeClass("show");
+
+    setTimeout(function(){
+        showSelectLangueForBook();
+    }, 500);
+
+}
 
 function setLangueForBook(langueSelected){
     langue_for_book = langueSelected;
@@ -44,13 +51,13 @@ function hideSelectLangueForBook(callback){
 
 //permet d'afficher la partie permettant de sélectionner la langue au départ
 function showSelectLangueForBook(callback){
-    $(".contentContentLangueForBook").hide();
+    $(".contentContentLangueForBook").show();
     setTimeout(function(){
         $(".contentContentLangueForBook").removeClass("hide");
         setTimeout(function(){
             callback();
         }, 200);
-    }, 10)
+    }, 100)
 }
 
 //permet d'initialiser certaines éléments de l'interface
@@ -84,6 +91,7 @@ function fabriqueListeBook(data){
 
             htmllistebook += 
                 '<div class="content-unbook">' + 
+                    '<div class="iconeBook"><i class="fas fa-book"></i></div>' + 
                     '<div class="content-column-unbook"><span class="text-title-book">' + langue_used.textTitleBook + '</span> ' + unLivre.titre + '</div>' +
                     '<div class="content-column-unbook"><span class="text-langue-book">' + langue_used.textLangueBook + '</span> ' + unLivre.langue.langue + '</div>' +
                     '<div class="content-column-unbook"><span class="text-date-book">' + langue_used.textDateBook + '</span> ' + new Date(unLivre.dateajout).toLocaleString() + '</div>' +

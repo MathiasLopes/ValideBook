@@ -28,6 +28,7 @@ body{
 
     font-size: 30px;
     padding: 9px 9px;
+    cursor: pointer;
 }
 
 .content-icone span{
