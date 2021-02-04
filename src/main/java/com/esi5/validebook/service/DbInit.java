@@ -64,6 +64,9 @@ public class DbInit implements CommandLineRunner {
         //insertion pour la tale book (livre de tests)
         resetAndInsertBooks();
 
+         //insertion des themes
+        resetAndInsertTheme();
+
     }
 
     //Insertion pour la table utilisateur
@@ -232,7 +235,7 @@ public class DbInit implements CommandLineRunner {
         extraitRepository.saveAndFlush(unExtrait);
     }
 
-    //Insertion pour la table utilisateur
+    //Insertion pour la table theme
     public void resetAndInsertTheme(){
 
         ThemeRepository.deleteAll();
