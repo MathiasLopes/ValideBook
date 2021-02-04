@@ -17,7 +17,8 @@ var langue_used = {
     textTitleWindowBookFilter: "Livres trouvés :",
     textBtnSearch: "Rechercher",
     btAnnulerFilters: "Annuler les filtres",
-    dejaInscrit: "Déjà inscrit ?"
+    dejaInscrit: "Déjà inscrit ?",
+    linkPasinscript: "Pas encore inscrit ?"
 }
 
 var jsonlangueforhtml = [{
