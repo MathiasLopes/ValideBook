@@ -40,6 +40,8 @@ public class DbInit implements CommandLineRunner {
     GenreRepository genreRepository;
     @Autowired
     ExtraitRepository extraitRepository;
+    @Autowired
+    ThemeRepository themeRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
