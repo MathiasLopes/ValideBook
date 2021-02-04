@@ -235,37 +235,37 @@ public class DbInit implements CommandLineRunner {
         ThemeRepository.deleteAll();
         
         ThemeEntity theme1 = new ThemeEntity();
-        theme1.getNom("Littérature");
+        theme1.setNom("Littérature");
 
         ThemeEntity theme2 = new ThemeEntity();
-        theme2.getNom("Arthropologie et sciences du langage");
+        theme2.setNom("Arthropologie et sciences du langage");
 
         ThemeEntity theme3 = new ThemeEntity();
-        theme3.getNom("Arthropologie et sciences du langage");
+        theme3.setNom("Arthropologie et sciences du langage");
 
         ThemeEntity theme4 = new ThemeEntity();
-        theme4.getNom("Histoire");
+        theme4.setNom("Histoire");
 
         ThemeEntity theme5 = new ThemeEntity();
-        theme5.getNom("Philosophie, Sociologie");
+        theme5.setNom("Philosophie, Sociologie");
 
         ThemeEntity theme6 = new ThemeEntity();
-        theme6.getNom("Revue, article, scientifique");
+        theme6.setNom("Revue, article, scientifique");
 
         ThemeEntity theme7 = new ThemeEntity();
-        theme7.getNom("Sciences Politiques");
+        theme7.setNom("Sciences Politiques");
 
         ThemeEntity theme8 = new ThemeEntity();
-        theme8.getNom("Citations");
+        theme8.setNom("Citations");
 
         ThemeEntity theme9 = new ThemeEntity();
-        theme9.getNom("Proverbe");
+        theme9.setNom("Proverbe");
         
         ThemeEntity theme10 = new ThemeEntity();
-        theme10.getNom("Adages");
+        theme10.setNom("Adages");
         
         ThemeEntity theme11 = new ThemeEntity();
-        theme11.getNom("Dictons"); 
+        theme11.setNom("Dictons"); 
 
     }
 
