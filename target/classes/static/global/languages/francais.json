@@ -16,5 +16,8 @@
     "textAucunBookTrouve": "Aucun livre retrouvé",
     "textTitleWindowBookFilter": "Livres trouvés :",
     "textBtnSearch": "Rechercher",
-    "btAnnulerFilters": "Annuler les filtres"
+    "btAnnulerFilters": "Annuler les filtres",
+    "dejaInscrit": "Déjà inscrit ?",
+    "linkPasinscript": "Pas encore inscrit ?",
+    "btSInscrire": "S'inscrire"
 }

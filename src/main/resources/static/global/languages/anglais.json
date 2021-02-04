@@ -17,5 +17,7 @@
     "textTitleWindowBookFilter": "Books found :",
     "textBtnSearch": "Search",
     "btAnnulerFilters": "Undo filters",
-    "dejaInscrit": "Already registered ?"
+    "dejaInscrit": "Already registered ?",
+    "linkPasinscript": "Not already registered ?",
+    "btSInscrire": "Register"
 }

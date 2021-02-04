@@ -10,7 +10,7 @@ function loadLangueSignup(){
     $("#labelEmail").html(langue_used.champEmail);
     $("#labelPassword").html(langue_used.champPassword);
     $("#labelNomComplet").html(langue_used.champNomComplet);
-    $("#btnSeConnecter").html(langue_used.btSeConnecter);
+    $("#btnSInscrire").html(langue_used.btSInscrire);
     $("#idInvalideOrPasswordForgotten").html(langue_used.idInvalideOrPasswordForgotten);
     $("#champDisconnected").html(langue_used.champDisconnected);
     $("#linkDejainscript").html(langue_used.dejaInscrit);
