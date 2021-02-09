@@ -3,6 +3,7 @@ var langue_used = {
     btSeConnecter: "Se connecter",
     champEmail: "Email",
     champPassword: "Mot de passe",
+    champNomComplet: "Nom complet",
     idInvalideOrPasswordForgotten: "Identifiant ou mot de passe invalide",
     champDisconnected:"Vous avez été déconnecté",
     textTitleBook:"Titre :",
@@ -15,7 +16,9 @@ var langue_used = {
     textAucunBookTrouve: "Aucun livre retrouvé",
     textTitleWindowBookFilter: "Livres trouvés :",
     textBtnSearch: "Rechercher",
-    btAnnulerFilters: "Annuler les filtres"
+    btAnnulerFilters: "Annuler les filtres",
+    dejaInscrit: "Déjà inscrit ?",
+    linkPasinscript: "Pas encore inscrit ?"
 }
 
 var jsonlangueforhtml = [{

@@ -12,6 +12,7 @@ function loadLangueLogin(){
     $("#btnSeConnecter").html(langue_used.btSeConnecter);
     $("#idInvalideOrPasswordForgotten").html(langue_used.idInvalideOrPasswordForgotten);
     $("#champDisconnected").html(langue_used.champDisconnected);
+    $("#linkPasinscript").html(langue_used.linkPasinscript);
 }
 
 //méthode par défaut permettant à chaque site de charger sa langue avec le module de langue ajouté

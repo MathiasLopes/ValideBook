@@ -3,6 +3,8 @@ package com.esi5.validebook.entity;
 import java.util.Objects;
 import javax.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "user")
 public class UserEntity {
@@ -17,7 +19,7 @@ public class UserEntity {
     private String password;
     private boolean accountVerified;
     private String roles;
-    private Integer idlangue;
+    private Date datecreation;
 
     public Long getId() {
         return id;
@@ -79,13 +81,12 @@ public class UserEntity {
     public void setNomComplet(String nomComplet) {
         this.nomComplet = nomComplet;
     }
-
-    public Integer getIdlangue() {
-        return idlangue;
+    
+    public Date getDatecreation() {
+        return datecreation;
     }
 
-    public void setIdlangue(Integer idlangue) {
-        this.idlangue = idlangue;
+    public void setDatecreation(Date datecreation) {
+        this.datecreation = datecreation;
     }
-
 }

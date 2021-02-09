@@ -7,11 +7,13 @@ import com.esi5.validebook.entity.CategorieEntity;
 import com.esi5.validebook.entity.ExtraitEntity;
 import com.esi5.validebook.entity.GenreEntity;
 import com.esi5.validebook.entity.LangueEntity;
+import com.esi5.validebook.entity.ThemeEntity;
 import com.esi5.validebook.repository.BookRepository;
 import com.esi5.validebook.repository.CategorieRepository;
 import com.esi5.validebook.repository.ExtraitRepository;
 import com.esi5.validebook.repository.GenreRepository;
 import com.esi5.validebook.repository.LangueRepository;
+import com.esi5.validebook.repository.ThemeRepository;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,6 +40,8 @@ public class DbInit implements CommandLineRunner {
     GenreRepository genreRepository;
     @Autowired
     ExtraitRepository extraitRepository;
+    @Autowired
+    ThemeRepository themeRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -59,6 +63,9 @@ public class DbInit implements CommandLineRunner {
 
         //insertion pour la tale book (livre de tests)
         resetAndInsertBooks();
+
+         //insertion des themes
+        resetAndInsertTheme();
 
     }
 
@@ -122,6 +129,7 @@ public class DbInit implements CommandLineRunner {
             unBook.setDatepublication(new Date());
             unBook.setDatevalidation(new Date());
             unBook.setIdcategorie(rand.nextInt(3 - 1 + 1) + 1);
+            unBook.setIdtheme(rand.nextInt(10 - 1 + 1) + 1);
             unBook.setIdgenre(rand.nextInt(3 - 1 + 1) + 1);
             unBook.setIdlangue(rand.nextInt(4 - 1 + 1) + 1);
             unBook.setIduserajout(i);
@@ -225,6 +233,76 @@ public class DbInit implements CommandLineRunner {
         unExtrait.setIdlivre(idbook);
         unExtrait.setExtrait("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
         extraitRepository.saveAndFlush(unExtrait);
+    }
+
+    //Insertion pour la table theme
+    public void resetAndInsertTheme(){
+
+        themeRepository.deleteAll();
+
+        Long i = (long) 0;
+        
+        ThemeEntity theme1 = new ThemeEntity();
+        i++;
+        theme1.setId(i);
+        theme1.setNom("Littérature");
+
+        ThemeEntity theme2 = new ThemeEntity();
+        i++;
+        theme2.setId(i);
+        theme2.setNom("Anthropologie et sciences du langage");
+
+        ThemeEntity theme4 = new ThemeEntity();
+        i++;
+        theme4.setId(i);
+        theme4.setNom("Histoire");
+
+        ThemeEntity theme5 = new ThemeEntity();
+        i++;
+        theme5.setId(i);
+        theme5.setNom("Philosophie, Sociologie");
+
+        ThemeEntity theme6 = new ThemeEntity();
+        i++;
+        theme6.setId(i);
+        theme6.setNom("Revue, article, scientifique");
+
+        ThemeEntity theme7 = new ThemeEntity();
+        i++;
+        theme7.setId(i);
+        theme7.setNom("Sciences Politiques");
+
+        ThemeEntity theme8 = new ThemeEntity();
+        i++;
+        theme8.setId(i);
+        theme8.setNom("Citations");
+
+        ThemeEntity theme9 = new ThemeEntity();
+        i++;
+        theme9.setId(i);
+        theme9.setNom("Proverbe");
+        
+        ThemeEntity theme10 = new ThemeEntity();
+        i++;
+        theme10.setId(i);
+        theme10.setNom("Adages");
+        
+        ThemeEntity theme11 = new ThemeEntity();
+        i++;
+        theme11.setId(i);
+        theme11.setNom("Dictons"); 
+
+        themeRepository.saveAndFlush(theme1);
+        themeRepository.saveAndFlush(theme2);
+        themeRepository.saveAndFlush(theme4);
+        themeRepository.saveAndFlush(theme5);
+        themeRepository.saveAndFlush(theme6);
+        themeRepository.saveAndFlush(theme7);
+        themeRepository.saveAndFlush(theme8);
+        themeRepository.saveAndFlush(theme9);
+        themeRepository.saveAndFlush(theme10);
+        themeRepository.saveAndFlush(theme11);
+        
     }
 
 }

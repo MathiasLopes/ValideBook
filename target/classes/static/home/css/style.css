@@ -28,6 +28,7 @@ body{
 
     font-size: 30px;
     padding: 9px 9px;
+    cursor: pointer;
 }
 
 .content-icone span{
@@ -123,6 +124,9 @@ body{
 .content-column-unbook{
     padding:5px 20px 5px 20px;
     text-align: left;
+    background-color: #FAFAFA;
+    border-radius: 10px;
+    margin-top: 5px;
 }
 
 .book-not-found{
@@ -132,7 +136,7 @@ body{
 
 #content-listebook-complete{
     overflow-y: auto;
-    max-height: calc(100% - 160px);
+    max-height: calc(100% - 220px)
     min-height: 115px;
 }
 
@@ -170,4 +174,110 @@ body{
 
 .un_filtre input:focus, .un_filtre input:valid {
     margin-top: 28px;
+}
+
+.text-for-book{
+    color:#AAA;
+}
+
+.iconeBook{
+    float: left;
+    color: #FFF;
+    font-size: 35px;
+    position: absolute;
+    right: 6px;
+    top: 34px;
+    background-color: #4285F477;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.contentContentLangueForBook{
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 200px);
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.contentContentLangueForBook.hide{
+    opacity: 0;
+}
+
+.contentContentLangueForBook label{
+    position: relative !important;
+    margin-bottom: 20px;
+    background-color: #EEE4;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #333;
+}
+
+.contentLangueForBook{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.langueForBook{
+    height: 97px;
+    width: 150px;
+    background-size: 100% 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 9px;
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 12px -8px black;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.langueForBook:hover{
+    transform: scale(1.2);
+}
+
+.langueForBook.langueForBookFrancais{
+    background-image: url("/global/languages/images/francais.jpg");
+}
+
+.langueForBook.langueForBookAnglais{
+    background-image: url("/global/languages/images/anglais.jpg");
+}
+
+.langueForBook.langueForBookTamazight{
+    background-image: url("/global/languages/images/tamazight.jpg");
+}
+
+.langueForBook.langueForBookArabe{
+    background-image: url("/global/languages/images/arabe.jpg");
+}
+
+.content-theme{
+    display: flex;
+    font-size: 20px;
+    overflow-x: auto;
+    height: 45px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.unTheme{
+    padding: 5px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: #EFEFEF;
+    margin-right: 3px;
+    border-radius: 7px;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.unTheme:hover{
+    background-color:#CCC;
 }

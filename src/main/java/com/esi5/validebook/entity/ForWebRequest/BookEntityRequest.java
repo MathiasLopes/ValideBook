@@ -12,11 +12,13 @@ import com.esi5.validebook.entity.EditeurEntity;
 import com.esi5.validebook.entity.ExtraitEntity;
 import com.esi5.validebook.entity.GenreEntity;
 import com.esi5.validebook.entity.LangueEntity;
+import com.esi5.validebook.entity.ThemeEntity;
 
 public class BookEntityRequest extends BookEntity {
 
     private GenreEntity genre;
     private CategorieEntity categorie;
+    private ThemeEntity theme;
     private LangueEntity langue;
     private List<AuteurEntity> listAuteurs;
     private List<CommentaireEntity> listCommentaires;
@@ -95,6 +97,14 @@ public class BookEntityRequest extends BookEntity {
 
     public void setListEditeurs(List<EditeurEntity> listEditeurs) {
         this.listEditeurs = listEditeurs;
+    }
+
+    public ThemeEntity getTheme() {
+        return theme;
+    }
+
+    public void setTheme(ThemeEntity theme) {
+        this.theme = theme;
     }
 
 }

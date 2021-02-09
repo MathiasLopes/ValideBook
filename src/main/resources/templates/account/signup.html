@@ -1,4 +1,75 @@
-<html>
-    <head></head>
-    <body></body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" th:href="@{/global/packages/rippleria/jquery.rippleria.min.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/global/css/all.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/global/css/input.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/login/css/login.css}"/>
+        
+        <script th:src="@{/global/packages/jquery/jquery/jquery-3.5.1.min.js}"></script>
+        <script th:src="@{/global/packages/rippleria/jquery.rippleria.min.js}"></script>
+
+        <!-- importation des languages -->
+        <link rel="stylesheet" type="text/css" th:href="@{/global/languages/base_languages.css}"/>
+        <script th:src="@{/global/languages/base_languages.js}"></script>
+
+        <script th:src="@{/signup/js/signup_language.js}"></script>
+        <script th:src="@{/signup/js/signup.js}"></script>
+
+    </head>
+    <body class="hold-transition login-page">
+        <!-- html de base pour language -->
+        <div id="chooselanguages">
+            <div id="imagelanguage" class="francais"></div>
+            <div class="parent-parentlanguagetochoose"></div>
+        </div>
+        <!-- fin -->
+        <div class="login-box">
+            <div class="login-logo">
+                <div class="card">
+                    <div class="card-body login-card-body">
+                        <img th:src="@{/global/images/icone.png}" class="icone" alt="icone" />
+                        <p id="titreBienvenue" class="login-box-msg">Bienvenue sur ValideBook</p>
+                        <form th:action="@{/signup}" method="post">
+                            <div class="input-group mb-3">
+                                <div class="group">      
+                                    <input type="text" name="nomComplet" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label id="labelNomComplet">Nom Complet</label>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <div class="group">      
+                                    <input type="text" name="username" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label id="labelEmail">Email</label>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="group">      
+                                    <input type="text" name="password" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label id="labelPassword">Mot de passe</label>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-bottom:10px;">
+                                <div class="col-4">
+                                    <button id="btnSInscrire" type="submit" data-rippleria data-rippleria-color="rgba(0,0,0,.35)" class="btn-validation">S'inscrire</button>
+                                </div>
+                            </div>
+                            <b><a  id="linkDejainscript" href="/login">Déjà inscrit ?</a></b>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

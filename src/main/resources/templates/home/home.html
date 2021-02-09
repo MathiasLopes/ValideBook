@@ -26,12 +26,11 @@
         <script th:src="@{/global/packages/deconnexion/deconnexion.js}"></script>
 
         <script th:src="@{/home/js/home_language.js}"></script>
-        <script th:src="@{/global/js/show-conteneur-on-load.js}"></script>
         <script th:src="@{/global/js/functionForAll.js}"></script>
         <script th:src="@{/home/js/script.js}"></script>
     </head>
     <body>
-        <div class="conteneur content-icone">
+        <div class="conteneur show content-icone" onclick="backToLangueSelection();">
             <img class="icone" th:src="@{/global/images/icone.png}" />
             <span>ValideBook</span>
         </div>
@@ -47,7 +46,22 @@
         </div>
         <!-- fin -->
 
-        <div style="display: block;">
+        <div class="contentContentLangueForBook">
+            <label>Sélectionner le language des livres : </label>
+            <div class="contentLangueForBook">
+                <div class="langueForBook langueForBookFrancais" onclick="setLangueForBook('francais');"></div>
+                <div class="langueForBook langueForBookAnglais" onclick="setLangueForBook('anglais');"></div>
+                <div class="langueForBook langueForBookTamazight" onclick="setLangueForBook('tamazight');"></div>
+                <div class="langueForBook langueForBookArabe" onclick="setLangueForBook('arabe');"></div>
+            </div>
+        </div>
+
+        <div id="dashboard" style="display: none;">
+
+            <!-- liste des themes possible -->
+            <div class="conteneur content-theme">
+                
+            </div>
 
             <!-- liste des 20 derniers livres validés -->
             <div class="conteneur content-listebook">
@@ -92,19 +106,18 @@
                     <!-- fin -->
 
                     <!-- filtre langue -->
-                    <div class="un_filtre">
+                    <!--<div class="un_filtre">
                         <label class="titleInSelect" id="textFiltreLangue">Langue</label>
                         <div include="form-input-select()">
                             <select id="selectLangue" required>
                               <option value="">Langue</option>
-                              <!-- normal options -->
                               <option value="francais">Français</option>
                               <option value="anglais">Anglais</option>
                               <option value="tamazight">Tamazight</option>
                               <option value="arabe">Arabe</option>
                             </select>
                           </div>
-                    </div>
+                    </div>-->
                     <!-- fin -->
 
                     <!-- filtre date publication -->

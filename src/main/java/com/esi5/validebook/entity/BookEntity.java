@@ -21,6 +21,7 @@ public class BookEntity {
     private Integer idlangue;
     private Integer idcategorie;
     private Integer idgenre;
+    private Integer idtheme;
     
     private Integer iduserajout;
     private Date dateajout;
@@ -129,6 +130,14 @@ public class BookEntity {
 
     public Boolean isValidee(){
         return this.getIduservalide() > 0;
+    }
+
+    public Integer getIdtheme() {
+        return idtheme;
+    }
+
+    public void setIdtheme(Integer idtheme) {
+        this.idtheme = idtheme;
     }
 
 }
