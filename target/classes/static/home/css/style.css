@@ -136,7 +136,7 @@ body{
 
 #content-listebook-complete{
     overflow-y: auto;
-    max-height: calc(100% - 220px)
+    max-height: calc(100% - 220px);
     min-height: 115px;
 }
 
