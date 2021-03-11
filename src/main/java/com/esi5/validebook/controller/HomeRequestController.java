@@ -75,7 +75,7 @@ public class HomeRequestController {
 
         try{
 
-            for (var i = 0; i < listeBook.size(); i++){
+            for (int i = 0; i < listeBook.size(); i++){
 
                 BookEntity book = listeBook.get(i);
 
