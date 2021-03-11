@@ -1,6 +1,6 @@
 body{
     font-family: Roboto;
-    background-color: #4285F4;
+    background: linear-gradient(0.4turn, #8af0ff, #4285F4);
 }
 
 .conteneur{
@@ -110,6 +110,8 @@ body{
     margin-left: auto;
     border-bottom: 1px solid #CCC;
     margin-right: auto;
+    padding: 5px 6px;
+    padding-bottom: 8px;
     position: relative;
 }
 
@@ -119,7 +121,7 @@ body{
     border-bottom: 1px solid #FFF;
     z-index: 2;
     position: relative;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .content-column-unbook{
