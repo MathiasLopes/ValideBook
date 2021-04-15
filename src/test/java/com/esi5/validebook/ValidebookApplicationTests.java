@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.esi5.validebook.entity.BookEntity;
+import com.esi5.validebook.entity.EditeurEntity;
 import com.esi5.validebook.entity.ForWebRequest.BookEntityRequest;
 import com.esi5.validebook.repository.*;
 
@@ -18,6 +19,8 @@ class ValidebookApplicationTests {
 
 	@Autowired
 	BookRepository bookRepository;
+	@Autowired
+	EditeurRepository editeurRepository;
 
 	@Test
 	void contextLoads() {
@@ -36,6 +39,13 @@ class ValidebookApplicationTests {
 		BookEntity bookById = bookRepository.getOne((long)1);
 		if(bookById == null)
 			throw new Exception("Erreur : Le livre avec l'id 1 n'a pas pu être récupéré");
+	}
+
+	@Test
+	void GetListEditeurs() throws Exception{
+		List<EditeurEntity> editeurList = editeurRepository.findAll();
+		if(editeurList != null || editeurList.size() <= 0)
+			throw new Exception("Erreur : Aucun editeur retrouvé");
 	}
 
 }
