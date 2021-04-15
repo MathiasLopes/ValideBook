@@ -26,7 +26,7 @@ class ValidebookApplicationTests {
 	@Test
 	void GetBookList() throws Exception{
 		List<BookEntity> bookList = bookRepository.findAll();
-		if(bookList == null || bookList.size() > 0)
+		if(bookList == null || bookList.size() <= 0)
 			throw new Exception("Erreur : Aucun livre retrouvé");
 	}
 
