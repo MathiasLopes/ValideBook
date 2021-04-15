@@ -41,6 +41,7 @@ class ValidebookApplicationTests {
 			throw new Exception("Erreur : Le livre avec l'id 1 n'a pas pu être récupéré");
 	}
 
+	//for commit push jenkins
 	@Test
 	void GetListEditeurs() throws Exception{
 		List<EditeurEntity> editeurList = editeurRepository.findAll();
