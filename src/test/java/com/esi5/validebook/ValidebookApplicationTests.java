@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.esi5.validebook.entity.BookEntity;
+import com.esi5.validebook.entity.ForWebRequest.BookEntityRequest;
 import com.esi5.validebook.repository.*;
 
 import org.junit.jupiter.api.Test;
@@ -28,6 +29,13 @@ class ValidebookApplicationTests {
 		List<BookEntity> bookList = bookRepository.findAll();
 		if(bookList == null || bookList.size() <= 0)
 			throw new Exception("Erreur : Aucun livre retrouvé");
+	}
+
+	@Test
+	void GetBookById() throws Exception{
+		BookEntity bookById = bookRepository.getOne((long)1);
+		if(bookById == null)
+			throw new Exception("Erreur : Le livre avec l'id 1 n'a pas pu être récupéré");
 	}
 
 }
