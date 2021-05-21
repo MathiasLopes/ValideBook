@@ -136,6 +136,40 @@
                 </div>
                 <div id="btnRechercher" onclick="initSearchWithFilter();" data-rippleria data-rippleria-color="rgba(0,0,0,.35)" class="btn-validation">Rechercher</div>
             </div>
+
+            <div id="filter-on-background"></div>
+
+            <!-- partie affichage des données d'un livre-->
+            <div class="conteneur content-infowindow">
+                <div id="title-search" class="title-conteneur">Information :<span onclick="hideInformationsOnBook();" class="btClose" ><i class="fas fa-times"></i></span></div>
+
+                <div class="content-infos-window">
+                    <div class="content-column-unbook">
+                        <span>Titre : </span><span id="input-info-titre"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Catégorie : </span><span id="input-info-categorie"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Thème : </span><span id="input-info-theme"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Genre : </span><span id="input-info-genre"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Langue : </span><span id="input-info-langue"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Date pubication : </span><span id="input-info-datepublication"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Date validation : </span><span id="input-info-datevalidation"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Résumé : </span><span id="input-info-resume"></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

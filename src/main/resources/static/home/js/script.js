@@ -15,7 +15,8 @@ function backToLangueSelection(){
     $(".content-listebook").removeClass("show");
     $(".content-searchwindow").removeClass("show");
     $(".content-theme").removeClass("show");
-
+    $(".content-infowindow").removeClass("show");
+    
     setTimeout(function(){
         showSelectLangueForBook();
     }, 500);
@@ -35,7 +36,6 @@ function setLangueForBook(langueSelected){
             $(".content-listebook").addClass("show");
             $(".content-searchwindow").addClass("show");
             $(".content-theme").addClass("show");
-            
         }, 100)
         
     });
@@ -96,7 +96,7 @@ function fabriqueListeBook(data){
             var unLivre = data[i];
 
             htmllistebook += 
-                '<div class="content-unbook">' + 
+                '<div onclick="showInformationsOnBook(\'' + btoa(JSON.stringify(unLivre)) + '\')" class="content-unbook">' + 
                     '<div class="iconeBook"><i class="fas fa-book"></i></div>' + 
                     '<div class="content-column-unbook"><span class="text-title-book">' + langue_used.textTitleBook + '</span> ' + unLivre.titre + '</div>' +
                     '<div class="content-column-unbook"><span class="text-langue-book">' + langue_used.textLangueBook + '</span> ' + unLivre.langue.langue + '</div>' +
@@ -261,4 +261,35 @@ function fabriqueListeThemes(themes){
 function searchByTheme(theme){
     theme_for_book = theme;
     initSearchWithFilter();
+}
+
+
+function showInformationsOnBook(book)
+{
+    //on recupere les infos du base64 vers les infos json
+    book = JSON.parse(atob(book));
+
+    console.log(book);
+
+    //remplir les informations du livre
+    $("#input-info-titre").html(book.titre);
+    $("#input-info-categorie").html(book.categorie.nom);
+    $("#input-info-theme").html(book.theme.nom);
+    $("#input-info-genre").html(book.genre.nom);
+    $("#input-info-langue").html(book.langue.langue);
+    $("#input-info-datepublication").html(new Date(book.datepublication).toLocaleString());
+    $("#input-info-datevalidation").html(new Date(book.datevalidation).toLocaleString());
+    $("#input-info-resume").html(book.resume);
+
+    //afficher la fenetre d'informations + afficher le blur
+    $("#filter-on-background").addClass("show");
+    $(".content-infowindow").addClass("show");
+
+
+}
+
+function hideInformationsOnBook()
+{
+    $(".content-infowindow").removeClass("show");
+    $("#filter-on-background").removeClass("show");
 }
