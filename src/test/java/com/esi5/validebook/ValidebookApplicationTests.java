@@ -53,6 +53,4 @@ class ValidebookApplicationTests {
 		if(listBook == null || listBook.size() <= 0)
 			throw new Exception("Erreur : Aucun livre retrouvé");
 	}
-	
-
 }
