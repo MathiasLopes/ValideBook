@@ -45,6 +45,7 @@ class ValidebookApplicationTests {
 		List<ThemeEntity> themeList = homeRequestController.listethemes();
 		if(themeList == null || themeList.size() <= 0)
 			throw new Exception("Erreur : Aucun theme retrouvé");
+			
 	}
 
 	@Test
