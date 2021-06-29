@@ -102,8 +102,6 @@ public class DbInit implements CommandLineRunner {
         book1.setDatepublication(new Date(System.currentTimeMillis()));
         book1.setMotcles("Polar");
         book1.setIdgenre(2);
-        book1.setIdcommentaire(10);
-        book1.setIdedition(4);
         book1.setIduserajout(20);
         book1.setIduservalide(20);
         book1.setDatevalidation(new Date(System.currentTimeMillis()));;
@@ -118,8 +116,6 @@ public class DbInit implements CommandLineRunner {
         book2.setDatepublication(new Date(System.currentTimeMillis()));
         book2.setMotcles("Horreur");
         book2.setIdgenre(1);
-        book2.setIdcommentaire(9);
-        book2.setIdedition(42);
         book2.setIduserajout(17);
         book2.setIduservalide(3);
         book2.setDatevalidation(new Date(System.currentTimeMillis()));;
@@ -128,7 +124,7 @@ public class DbInit implements CommandLineRunner {
         listebook.add(book1);
         bookRepository.saveAndFlush(book1);
         listebook.add(book2);
-        bookRepository.saveAndFlush(book2);*/
+        bookRepository.saveAndFlush(book2);
 
     }
 
