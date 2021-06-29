@@ -3,13 +3,22 @@ package com.esi5.validebook.service;
 import com.esi5.validebook.entity.UserEntity;
 import com.esi5.validebook.repository.UserRepository;
 import com.esi5.validebook.entity.BookEntity;
+import com.esi5.validebook.entity.CategorieEntity;
+import com.esi5.validebook.entity.ExtraitEntity;
+import com.esi5.validebook.entity.GenreEntity;
 import com.esi5.validebook.entity.LangueEntity;
+import com.esi5.validebook.entity.ThemeEntity;
 import com.esi5.validebook.repository.BookRepository;
+import com.esi5.validebook.repository.CategorieRepository;
+import com.esi5.validebook.repository.ExtraitRepository;
+import com.esi5.validebook.repository.GenreRepository;
 import com.esi5.validebook.repository.LangueRepository;
+import com.esi5.validebook.repository.ThemeRepository;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,29 +34,46 @@ public class DbInit implements CommandLineRunner {
     BookRepository bookRepository;
     @Autowired
     LangueRepository langueRepository;
+    @Autowired
+    CategorieRepository categorieRepository;
+    @Autowired
+    GenreRepository genreRepository;
+    @Autowired
+    ExtraitRepository extraitRepository;
+    @Autowired
+    ThemeRepository themeRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+ 
     @Override
     public void run(String... args) throws Exception {
-
-        // insertion dans la table utilisateur
+        
+        //insertion dans la table utilisateur
         resetAndInsertUsers();
 
-        // insertion pour la tale book
+        //ajoute les langues dans la base de données
+        resetAndInsertLangues();
+
+        //insertion des categories de test
+        resetAndInsertCategories();
+
+        //insertion des genres de test
+        resetAndInsertGenre();
+
+        //insertion pour la tale book (livre de tests)
         resetAndInsertBooks();
 
-        // ajoute les langues dans la base de données
-        resetAndInsertLangues();
+         //insertion des themes
+        resetAndInsertTheme();
 
     }
 
-    // Insertion pour la table utilisateur
-    public void resetAndInsertUsers() {
+    //Insertion pour la table utilisateur
+    public void resetAndInsertUsers(){
 
         userRepository.deleteAll();
-
+        
         UserEntity user = new UserEntity();
         user.setEmail("sguerfi12@yahoo.com");
         user.setNomComplet("TOTO");
@@ -75,7 +101,7 @@ public class DbInit implements CommandLineRunner {
         user3.setAccountVerified(true);
         user3.setPassword(passwordEncoder.encode("1234"));
         user3.setRoles("SPECIALISTE");
-
+        
         List<UserEntity> listeuser = new ArrayList<>();
         listeuser.add(user);
         userRepository.saveAndFlush(user);
@@ -88,48 +114,38 @@ public class DbInit implements CommandLineRunner {
 
     }
 
-    // insertion pour la tale books
+    //insertion pour la table books
     public void resetAndInsertBooks(){
 
         bookRepository.deleteAll();
+        resetExtraits();
 
-        BookEntity book1 = new BookEntity();
-        book1.setTitre("Lupin");
-        book1.setIdlangue(1);
-        book1.setResume("blobloblo");
-        book1.setIdcategorie(2);
-        book1.setDateajout(new Date(System.currentTimeMillis()));
-        book1.setDatepublication(new Date(System.currentTimeMillis()));
-        book1.setMotcles("Polar");
-        book1.setIdgenre(2);
-        book1.setIduserajout(20);
-        book1.setIduservalide(20);
-        book1.setDatevalidation(new Date(System.currentTimeMillis()));;
+        for (Integer i = 1; i < 25; i++){
 
-        
-        BookEntity book2 = new BookEntity();
-        book2.setTitre("Lupdeux");
-        book2.setIdlangue(2);
-        book2.setResume("blyblybly");
-        book2.setIdcategorie(1);
-        book2.setDateajout(new Date(System.currentTimeMillis()));
-        book2.setDatepublication(new Date(System.currentTimeMillis()));
-        book2.setMotcles("Horreur");
-        book2.setIdgenre(1);
-        book2.setIduserajout(17);
-        book2.setIduservalide(3);
-        book2.setDatevalidation(new Date(System.currentTimeMillis()));;
-        
-        List<BookEntity> listebook = new ArrayList<>();
-        listebook.add(book1);
-        bookRepository.saveAndFlush(book1);
-        listebook.add(book2);
-        bookRepository.saveAndFlush(book2);
+            Random rand = new Random();
+
+            BookEntity unBook = new BookEntity();
+            unBook.setDateajout(new Date());
+            unBook.setDatepublication(new Date());
+            unBook.setDatevalidation(new Date());
+            unBook.setIdcategorie(rand.nextInt(3 - 1 + 1) + 1);
+            unBook.setIdtheme(rand.nextInt(10 - 1 + 1) + 1);
+            unBook.setIdgenre(rand.nextInt(3 - 1 + 1) + 1);
+            unBook.setIdlangue(rand.nextInt(4 - 1 + 1) + 1);
+            unBook.setIduserajout(i);
+            unBook.setIduservalide(i);
+            unBook.setMotcles("test" + Integer.toString(i));
+            unBook.setResume("je suis un résumé" + Integer.toString(i));
+            unBook.setTitre("Livre" + Integer.toString(i));
+
+            unBook = bookRepository.saveAndFlush(unBook);
+            insertExtraits(unBook.getId());
+        } 
 
     }
 
-    // ajoute les langues dans la base de données
-    public void resetAndInsertLangues() {
+    //ajoute les langues dans la base de données
+    public void resetAndInsertLangues(){
 
         langueRepository.deleteAll();
 
@@ -161,4 +177,133 @@ public class DbInit implements CommandLineRunner {
 
     }
 
+    //ajout de categorie
+    public void resetAndInsertCategories(){
+
+        categorieRepository.deleteAll();
+
+        CategorieEntity categorie1 = new CategorieEntity();
+        categorie1.setId((long) 1);
+        categorie1.setNom("Categorie 1");
+
+        CategorieEntity categorie2 = new CategorieEntity();
+        categorie2.setId((long) 2);
+        categorie2.setNom("Categorie 2");
+
+        CategorieEntity categorie3 = new CategorieEntity();
+        categorie3.setId((long) 3);
+        categorie3.setNom("Categorie 3");
+
+        categorieRepository.saveAndFlush(categorie1);
+        categorieRepository.saveAndFlush(categorie2);
+        categorieRepository.saveAndFlush(categorie3);
+    }
+
+    //ajout de genre
+    public void resetAndInsertGenre(){
+
+        genreRepository.deleteAll();
+
+        GenreEntity genre1 = new GenreEntity();
+        genre1.setId((long) 1);
+        genre1.setNom("Genre 1");
+
+        GenreEntity genre2 = new GenreEntity();
+        genre2.setId((long) 2);
+        genre2.setNom("Genre 2");
+
+        GenreEntity genre3 = new GenreEntity();
+        genre3.setId((long) 3);
+        genre3.setNom("Genre 3");
+
+        genreRepository.saveAndFlush(genre1);
+        genreRepository.saveAndFlush(genre2);
+        genreRepository.saveAndFlush(genre3);
+
+    }
+
+    //permet d'effacer toutes les entrés de la table Extraits
+    public void resetExtraits(){
+        extraitRepository.deleteAll();
+    }
+
+    //permet d'insérer des extraits avec l'id du livre passé en paramètres
+    public void insertExtraits(long idbook){
+        ExtraitEntity unExtrait = new ExtraitEntity();
+        unExtrait.setIdlivre(idbook);
+        unExtrait.setExtrait("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+        extraitRepository.saveAndFlush(unExtrait);
+    }
+
+    //Insertion pour la table theme
+    public void resetAndInsertTheme(){
+
+        themeRepository.deleteAll();
+
+        Long i = (long) 0;
+        
+        ThemeEntity theme1 = new ThemeEntity();
+        i++;
+        theme1.setId(i);
+        theme1.setNom("Littérature");
+
+        ThemeEntity theme2 = new ThemeEntity();
+        i++;
+        theme2.setId(i);
+        theme2.setNom("Anthropologie et sciences du langage");
+
+        ThemeEntity theme4 = new ThemeEntity();
+        i++;
+        theme4.setId(i);
+        theme4.setNom("Histoire");
+
+        ThemeEntity theme5 = new ThemeEntity();
+        i++;
+        theme5.setId(i);
+        theme5.setNom("Philosophie, Sociologie");
+
+        ThemeEntity theme6 = new ThemeEntity();
+        i++;
+        theme6.setId(i);
+        theme6.setNom("Revue, article, scientifique");
+
+        ThemeEntity theme7 = new ThemeEntity();
+        i++;
+        theme7.setId(i);
+        theme7.setNom("Sciences Politiques");
+
+        ThemeEntity theme8 = new ThemeEntity();
+        i++;
+        theme8.setId(i);
+        theme8.setNom("Citations");
+
+        ThemeEntity theme9 = new ThemeEntity();
+        i++;
+        theme9.setId(i);
+        theme9.setNom("Proverbe");
+        
+        ThemeEntity theme10 = new ThemeEntity();
+        i++;
+        theme10.setId(i);
+        theme10.setNom("Adages");
+        
+        ThemeEntity theme11 = new ThemeEntity();
+        i++;
+        theme11.setId(i);
+        theme11.setNom("Dictons"); 
+
+        themeRepository.saveAndFlush(theme1);
+        themeRepository.saveAndFlush(theme2);
+        themeRepository.saveAndFlush(theme4);
+        themeRepository.saveAndFlush(theme5);
+        themeRepository.saveAndFlush(theme6);
+        themeRepository.saveAndFlush(theme7);
+        themeRepository.saveAndFlush(theme8);
+        themeRepository.saveAndFlush(theme9);
+        themeRepository.saveAndFlush(theme10);
+        themeRepository.saveAndFlush(theme11);
+        
+    }
+
 }
+
