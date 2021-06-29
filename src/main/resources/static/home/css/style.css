@@ -1,10 +1,10 @@
 body{
     font-family: Roboto;
-    background-color: #4285F4;
+    background: linear-gradient(0.4turn, #8af0ff, #4285F4);
 }
 
 .conteneur{
-    transition:0.7s;
+    transition:0.5s;
     opacity:0;
     transform-origin: left;
     transform:scale(0.5);
@@ -28,6 +28,7 @@ body{
 
     font-size: 30px;
     padding: 9px 9px;
+    cursor: pointer;
 }
 
 .content-icone span{
@@ -40,11 +41,71 @@ body{
 }
 
 .content-listebook{
-    width: 98%;
+    width: 49%;
     min-height: 200px;
     margin-top: 13px;
-    margin-left: auto;
-    margin-right: auto;
+    max-height: calc(100% - 112px);
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+.conteneur.content-listebook.toshowsearch{
+    transform: translateX(calc(-100% - 20px)) !important;
+}
+
+#title-filtrebook{
+    display: none;
+}
+
+#content-filtrebook-complete{
+    display: none;
+}
+
+.conteneur.content-listebook.showsearch #title-listbook{
+    display: none !important;
+}
+
+.conteneur.content-listebook.showsearch #content-listebook-complete{
+    display: none;
+}
+
+.conteneur.content-listebook.showsearch #title-filtrebook{
+    display: block;
+}
+
+.conteneur.content-listebook.showsearch #content-filtrebook-complete{
+    display: block;
+}
+
+#content-filtrebook-complete{
+    overflow-y: auto;
+    max-height: calc(100% - 160px);
+    min-height: 115px;
+}
+
+.content-searchwindow{
+    width: 49%;
+    min-height: 200px;
+    margin-top: 13px;
+    max-height: calc(100% - 112px);
+    padding-bottom: 15px;
+    display: inline-block;
+    float: right;
+    margin-right: 0.5%;
+}
+
+.content-infowindow {
+    width: 600px;
+    bottom: -15px;
+    height: 95%;
+    position: fixed;
+    z-index: 5;
+    margin-left: calc(50% - 300px);
+    transform: scale(1) translateY(100%);
+}
+
+.content-infowindow.show{
+    transform: scale(1);
 }
 
 .title-conteneur{
@@ -55,14 +116,17 @@ body{
 
 .content-unbook{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 40px;
+    flex-direction: column;
     cursor: pointer;
-    transition:0.2s;
-    background-color:white;
-    border-radius: 5px;
+    transition: 0.2s;
+    background-color: white;
+    width: 93%;
+    margin-left: auto;
     border-bottom: 1px solid #CCC;
+    margin-right: auto;
+    padding: 5px 6px;
+    padding-bottom: 8px;
+    position: relative;
 }
 
 .content-unbook:hover{
@@ -71,14 +135,200 @@ body{
     border-bottom: 1px solid #FFF;
     z-index: 2;
     position: relative;
+    border-radius: 10px;
 }
 
 .content-column-unbook{
     padding:5px 20px 5px 20px;
     text-align: left;
+    background-color: #FAFAFA;
+    border-radius: 10px;
+    margin-top: 5px;
 }
 
 .book-not-found{
     text-align:center;
     margin-top: 54px;
+}
+
+#content-listebook-complete{
+    overflow-y: auto;
+    max-height: calc(100% - 220px);
+    min-height: 115px;
+}
+
+#content-searchbook-complete{
+    padding: 15px 25px;
+}
+
+#btnRechercher{
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 115px;
+    width: 50%;
+}
+
+#btAnnulerFiltre{
+    color:white;
+    background-color: #DB4437;
+    display: inline-block;
+    float: right;
+    position: relative;
+    right: 5px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    top: -5px;
+    cursor: pointer;
+}
+
+.un_filtre .group{
+    margin-bottom: 20px !important;
+}
+
+.un_filtre input{
+    transition: 0.2s;
+}
+
+.un_filtre input:focus, .un_filtre input:valid {
+    margin-top: 28px;
+}
+
+.text-for-book{
+    color:#AAA;
+}
+
+.iconeBook{
+    float: left;
+    color: #FFF;
+    font-size: 35px;
+    position: absolute;
+    right: 6px;
+    top: 34px;
+    background-color: #4285F477;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.contentContentLangueForBook{
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 200px);
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.contentContentLangueForBook.hide{
+    opacity: 0;
+}
+
+.contentContentLangueForBook label{
+    position: relative !important;
+    margin-bottom: 20px;
+    background-color: #EEE4;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #333;
+}
+
+.contentLangueForBook{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.langueForBook{
+    height: 97px;
+    width: 150px;
+    background-size: 100% 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 9px;
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 12px -8px black;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.langueForBook:hover{
+    transform: scale(1.2);
+}
+
+.langueForBook.langueForBookFrancais{
+    background-image: url("/global/languages/images/francais.jpg");
+}
+
+.langueForBook.langueForBookAnglais{
+    background-image: url("/global/languages/images/anglais.jpg");
+}
+
+.langueForBook.langueForBookTamazight{
+    background-image: url("/global/languages/images/tamazight.jpg");
+}
+
+.langueForBook.langueForBookArabe{
+    background-image: url("/global/languages/images/arabe.jpg");
+}
+
+.content-theme{
+    display: flex;
+    font-size: 20px;
+    overflow-x: auto;
+    height: 45px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.unTheme{
+    padding: 5px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: #EFEFEF;
+    margin-right: 3px;
+    border-radius: 7px;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.unTheme:hover{
+    background-color:#CCC;
+}
+
+#filter-on-background{
+    backdrop-filter: blur(6px);
+    position: fixed;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+    transition: 0.2s;
+    opacity: 0;
+}
+
+#filter-on-background.show{
+    pointer-events: all;
+    opacity: 1;
+}
+
+.content-infos-window
+{
+    padding: 5px 10px;
+}
+
+.btClose
+{
+    color: red;
+    float: right;
+    margin-right: 12px;
+    font-size: 28px;
+    position: relative;
+    top: -3px;
+    cursor: pointer;
 }

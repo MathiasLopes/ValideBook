@@ -1,0 +1,90 @@
+
+  #chooselanguages{
+    height: 40px;
+    width: 50px;
+    background-color:white;
+    border-radius:5px;
+    position: relative;
+    top: 10px;
+    left: 10px;
+    cursor:pointer;
+  }
+
+  #imagelanguage{
+    height: 30px;
+    width: 30px;
+    background-size: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 9px;
+    background-repeat: no-repeat;
+  }
+
+  #imagelanguage.francais{
+    background-image: url("/global/languages/images/francais.jpg");
+  }
+
+  #imagelanguage.anglais{
+    background-image: url("/global/languages/images/anglais.jpg");
+  }
+
+  .parent-parentlanguagetochoose{
+    height: 40px;
+    position: absolute;
+    left: 60px;
+    top: 0px;
+    background-color: white;
+    border-radius: 10px;
+    padding-right: 13px;
+    display: flex;
+    transition:0.2s;
+    transform-origin: left;
+    transform: scale(0);
+  }
+
+  .parent-parentlanguagetochoose.show{
+    transform: scale(1);
+  }
+
+  .parentlanguagetochoose{
+    height: 40px;
+    width: 50px;
+    background-color:white;
+    border-radius:5px;
+    margin-left:10px;
+    cursor:pointer;
+  }
+
+  .imagelanguagetochoose{
+    height: 30px;
+    width: 30px;
+    background-size: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 9px;
+    background-repeat: no-repeat;
+  }
+
+  .imagelanguagetochoose.francais{
+    background-image: url("/global/languages/images/francais.jpg");
+  }
+
+  .imagelanguagetochoose.anglais{
+    background-image: url("/global/languages/images/anglais.jpg");
+  }
+
+  #chooselanguages.topright{
+    float: right;
+    position: relative;
+    right: 25px;
+    margin-right: 20px;
+    top: 2px;
+  }
+
+  #chooselanguages.topright .parent-parentlanguagetochoose{
+    right: 60px;
+    left: auto;
+    transform-origin: right;
+  }

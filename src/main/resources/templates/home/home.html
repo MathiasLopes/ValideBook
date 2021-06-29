@@ -3,31 +3,172 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
+        <link rel="stylesheet" type="text/css" th:href="@{/global/packages/jquery/jquery-ui/jquery-ui.min.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/global/packages/rippleria/jquery.rippleria.min.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/global/css/all.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{/global/css/loading.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/global/css/input.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/global/css/select.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/home/css/style.css}" />
+        
+        <script src="https://kit.fontawesome.com/f59cb51be9.js"></script>
 
-        <script th:src="@{/global/js/jquery-3.5.1.min.js}"></script>
+        <script th:src="@{/global/packages/jquery/jquery/jquery-3.5.1.min.js}"></script>
+        <script th:src="@{/global/packages/jquery/jquery-ui/jquery-ui.min.js}"></script>
         <script th:src="@{/global/packages/rippleria/jquery.rippleria.min.js}"></script>
         
-        <script th:src="@{/global/js/show-conteneur-on-load.js}"></script>
+        <!-- importation des languages -->
+        <link rel="stylesheet" type="text/css" th:href="@{/global/languages/base_languages.css}"/>
+        <script th:src="@{/global/languages/base_languages.js}"></script>
+
+        <!-- importation du bouton deconnexion -->
+        <link rel="stylesheet" type="text/css" th:href="@{/global/packages/deconnexion/deconnexion.css}" />
+        <script th:src="@{/global/packages/deconnexion/deconnexion.js}"></script>
+
+        <script th:src="@{/home/js/home_language.js}"></script>
+        <script th:src="@{/global/js/functionForAll.js}"></script>
         <script th:src="@{/home/js/script.js}"></script>
     </head>
     <body>
-        <div class="conteneur content-icone">
+        <div class="conteneur show content-icone" onclick="backToLangueSelection();">
             <img class="icone" th:src="@{/global/images/icone.png}" />
             <span>ValideBook</span>
         </div>
-        <div class="conteneur content-listebook">
-            <div class="title-conteneur">20 derniers livres ajoutés :</div>
-            <div id="content-listebook-complete">
-                <!-- icone de loading -->
-                <div class="content-loading">
-                    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-                    </svg>
+
+        <!-- bouton deconnexion -->
+        <div id="btDeconnexion">Se déconnecter</div>
+        <!-- fin -->
+
+        <!-- html de base pour language -->
+        <div id="chooselanguages" class="topright">
+            <div id="imagelanguage" class="francais"></div>
+            <div class="parent-parentlanguagetochoose"></div>
+        </div>
+        <!-- fin -->
+
+        <div class="contentContentLangueForBook">
+            <label>Sélectionner le language des livres : </label>
+            <div class="contentLangueForBook">
+                <div class="langueForBook langueForBookFrancais" onclick="setLangueForBook('francais');"></div>
+                <div class="langueForBook langueForBookAnglais" onclick="setLangueForBook('anglais');"></div>
+                <div class="langueForBook langueForBookTamazight" onclick="setLangueForBook('tamazight');"></div>
+                <div class="langueForBook langueForBookArabe" onclick="setLangueForBook('arabe');"></div>
+            </div>
+        </div>
+
+        <div id="dashboard" style="display: none;">
+
+            <!-- liste des themes possible -->
+            <div class="conteneur content-theme">
+                
+            </div>
+
+            <!-- liste des 20 derniers livres validés -->
+            <div class="conteneur content-listebook">
+                <div id="title-listbook" class="title-conteneur">20 derniers livres ajoutés :</div>
+                <div id="content-listebook-complete">
+                    <!-- icone de loading -->
+                    <div class="content-loading">
+                        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                        </svg>
+                    </div>
+                    <!-- fin icone de loading -->
                 </div>
-                <!-- fin icone de loading -->
+                <div id="title-filtrebook" class="title-conteneur"><span class="title">Livres trouvés :</span><div onclick="annuleFilters();" id="btAnnulerFiltre" data-rippleria data-rippleria-color="rgba(0,0,0,.35)">Annuler les filtres</div></div>
+                <div id="content-filtrebook-complete">
+                    <!-- icone de loading -->
+                    <div class="content-loading">
+                        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                        </svg>
+                    </div>
+                    <!-- fin icone de loading -->
+                </div>
+            </div>
+
+            <!-- partie recherche -->
+            <div class="conteneur content-searchwindow">
+                <div id="title-search" class="title-conteneur">Rechercher :</div>
+                <div id="content-searchbook-complete">
+
+                    <!-- filtre titre -->
+                    <div class="un_filtre">
+                        <div class="input-group mb-3">
+                            <div class="group">
+                                <input id="filtreTitre" class="filtreinput" type="text" required/>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label id="textFiltreTitre">Titre</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fin -->
+
+                    <!-- filtre langue -->
+                    <!--<div class="un_filtre">
+                        <label class="titleInSelect" id="textFiltreLangue">Langue</label>
+                        <div include="form-input-select()">
+                            <select id="selectLangue" required>
+                              <option value="">Langue</option>
+                              <option value="francais">Français</option>
+                              <option value="anglais">Anglais</option>
+                              <option value="tamazight">Tamazight</option>
+                              <option value="arabe">Arabe</option>
+                            </select>
+                          </div>
+                    </div>-->
+                    <!-- fin -->
+
+                    <!-- filtre date publication -->
+                    <!-- filtre titre -->
+                    <div class="un_filtre">
+                        <div class="input-group mb-3">
+                            <div class="group">
+                                <input id="datePublication" class="filtreinput" type="text" required/>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label >Date de publication</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="btnRechercher" onclick="initSearchWithFilter();" data-rippleria data-rippleria-color="rgba(0,0,0,.35)" class="btn-validation">Rechercher</div>
+            </div>
+
+            <div id="filter-on-background"></div>
+
+            <!-- partie affichage des données d'un livre-->
+            <div class="conteneur content-infowindow">
+                <div id="title-search" class="title-conteneur">Information :<span onclick="hideInformationsOnBook();" class="btClose" ><i class="fas fa-times"></i></span></div>
+
+                <div class="content-infos-window">
+                    <div class="content-column-unbook">
+                        <span>Titre : </span><span id="input-info-titre"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Catégorie : </span><span id="input-info-categorie"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Thème : </span><span id="input-info-theme"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Genre : </span><span id="input-info-genre"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Langue : </span><span id="input-info-langue"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Date pubication : </span><span id="input-info-datepublication"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Date validation : </span><span id="input-info-datevalidation"></span>
+                    </div>
+                    <div class="content-column-unbook">
+                        <span>Résumé : </span><span id="input-info-resume"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
