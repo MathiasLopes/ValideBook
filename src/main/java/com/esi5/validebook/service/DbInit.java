@@ -28,26 +28,26 @@ public class DbInit implements CommandLineRunner {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
- 
+
     @Override
     public void run(String... args) throws Exception {
-        
-        //insertion dans la table utilisateur
+
+        // insertion dans la table utilisateur
         resetAndInsertUsers();
 
-        //insertion pour la tale book
-        //resetAndInsertBooks();
+        // insertion pour la tale book
+        resetAndInsertBooks();
 
-        //ajoute les langues dans la base de données
+        // ajoute les langues dans la base de données
         resetAndInsertLangues();
-        
+
     }
 
-    //Insertion pour la table utilisateur
-    public void resetAndInsertUsers(){
+    // Insertion pour la table utilisateur
+    public void resetAndInsertUsers() {
 
         userRepository.deleteAll();
-        
+
         UserEntity user = new UserEntity();
         user.setEmail("sguerfi12@yahoo.com");
         user.setNomComplet("TOTO");
@@ -75,7 +75,7 @@ public class DbInit implements CommandLineRunner {
         user3.setAccountVerified(true);
         user3.setPassword(passwordEncoder.encode("1234"));
         user3.setRoles("SPECIALISTE");
-        
+
         List<UserEntity> listeuser = new ArrayList<>();
         listeuser.add(user);
         userRepository.saveAndFlush(user);
@@ -88,28 +88,41 @@ public class DbInit implements CommandLineRunner {
 
     }
 
-    //insertion pour la tale books
+    // insertion pour la tale books
     public void resetAndInsertBooks(){
 
-        /*bookRepository.deleteAll();
+        bookRepository.deleteAll();
 
         BookEntity book1 = new BookEntity();
         book1.setTitre("Lupin");
         book1.setIdlangue(1);
-        book1.setMeilleurextrait("blablabla");
         book1.setResume("blobloblo");
-        book1.setIduser(-1);
         book1.setIdcategorie(2);
         book1.setDateajout(new Date(System.currentTimeMillis()));
+        book1.setDatepublication(new Date(System.currentTimeMillis()));
+        book1.setMotcles("Polar");
+        book1.setIdgenre(2);
+        book1.setIdcommentaire(10);
+        book1.setIdedition(4);
+        book1.setIduserajout(20);
+        book1.setIduservalide(20);
+        book1.setDatevalidation(new Date(System.currentTimeMillis()));;
+
         
         BookEntity book2 = new BookEntity();
         book2.setTitre("Lupdeux");
         book2.setIdlangue(2);
-        book2.setMeilleurextrait("bliblibli");
         book2.setResume("blyblybly");
-        book2.setIduser(-1);
         book2.setIdcategorie(1);
         book2.setDateajout(new Date(System.currentTimeMillis()));
+        book2.setDatepublication(new Date(System.currentTimeMillis()));
+        book2.setMotcles("Horreur");
+        book2.setIdgenre(1);
+        book2.setIdcommentaire(9);
+        book2.setIdedition(42);
+        book2.setIduserajout(17);
+        book2.setIduservalide(3);
+        book2.setDatevalidation(new Date(System.currentTimeMillis()));;
         
         List<BookEntity> listebook = new ArrayList<>();
         listebook.add(book1);
@@ -119,8 +132,8 @@ public class DbInit implements CommandLineRunner {
 
     }
 
-    //ajoute les langues dans la base de données
-    public void resetAndInsertLangues(){
+    // ajoute les langues dans la base de données
+    public void resetAndInsertLangues() {
 
         langueRepository.deleteAll();
 
@@ -153,4 +166,3 @@ public class DbInit implements CommandLineRunner {
     }
 
 }
-
